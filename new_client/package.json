@@ -33,7 +33,7 @@
     "dayjs": "^1.11.13",
     "framer-motion": "^11.15.0",
     "jszip": "^3.10.1",
-    "lefthook": "^1.11.3",
+    "lefthook": "^2.1.10",
     "next": "15.5.9",
     "react": "^19.2.3",
     "react-datepicker": "^8.1.0",
