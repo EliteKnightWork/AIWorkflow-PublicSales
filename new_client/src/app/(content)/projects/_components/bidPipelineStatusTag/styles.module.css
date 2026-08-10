@@ -1,0 +1,28 @@
+.statusTag {
+  color: var(--bg-color-tag-text-active);
+  font-weight: bold;
+  border-radius: 2px;
+  border: 1px solid var(--border-color-separater);
+  background: var(--bg-color-quaternary);
+
+  @media screen and (max-width: 540px) {
+    /* 
+    テキストが枠内に収まらず見切れる場合は省略（…）で表示するためのCSS
+    1行で収まるよう制約し、省略記号(...)を自動付与
+  */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.statusSmallTag {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.statusLargeTag {
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+}

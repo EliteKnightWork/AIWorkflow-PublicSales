@@ -1,0 +1,99 @@
+.likeButton.small,
+.dislikeButton.small {
+  padding: 12px;
+  height: 40px;
+  width: 40px;
+}
+
+.likeButton {
+  border-radius: 8px;
+}
+
+.likeInactiveButton {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.dislikeButton {
+  border-radius: 8px;
+}
+
+.dislikeInactiveButton {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.likeButton,
+.dislikeButton {
+  color: var(--text-color-tertiary);
+  border: 1px solid var(--border-color-separater);
+  box-shadow: none;
+  padding: 16px;
+  height: 56px;
+  width: 56px;
+
+  @media screen and (max-width: 540px) {
+    padding: 12px;
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.likeActiveButton {
+  color: var(--app-orange-main);
+  border: 1px solid var(--app-orange-secondary);
+  background: var(--app-orange-light);
+  box-shadow: none;
+}
+
+.dislikeActiveButton {
+  color: var(--app-purple-secondary);
+  border: 1px solid var(--text-color-purple);
+  background: var(--bg-color-purple);
+  box-shadow: none;
+}
+
+/* 表示状態 */
+.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  width: 56px;
+  padding: 16px;
+  margin: 0;
+  border-width: 1px;
+
+  @media screen and (max-width: 540px) {
+    width: 48px;
+    padding: 12px;
+  }
+}
+
+/* 非表示状態 */
+.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  border-width: 0;
+  min-width: 0;
+}
+
+/* アニメーション */
+.likeButton,
+.dislikeButton {
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.2s ease-out,
+    width 0.2s ease-out,
+    padding 0.2s ease-out,
+    border-width 0.2s ease-out;
+  overflow: hidden;
+  box-sizing: border-box;
+}

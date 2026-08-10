@@ -1,0 +1,108 @@
+/* モーダル */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  max-width: 90%;
+  max-height: 90%;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 16px;
+  color: var(--color-black);
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8000;
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+}
+
+.description {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 40px;
+}
+
+.textArea {
+  border-radius: 8px;
+  background-color: var(--color-white);
+  min-height: 200px;
+  border: 1px solid var(--border-color-gray);
+  width: 100%;
+}
+
+.textArea textarea {
+  padding: 16px;
+  color: var(--color-black);
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  text-align: center;
+  gap: 16px;
+}
+
+.backButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 40px;
+  padding: 16px 24px;
+  width: 320px;
+  max-width: 40%;
+  font-weight: bold;
+}
+
+.nextButton {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  border-radius: 40px;
+  padding: 16px 24px;
+  width: 320px;
+  max-width: 40%;
+  font-weight: bold;
+}
+
+.nextButton:hover,
+.backButton:hover,
+.closeButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

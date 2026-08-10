@@ -1,0 +1,103 @@
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--text-color-tertiary);
+  height: 14px;
+}
+
+.loadingText {
+  font-size: 14px;
+  color: var(--text-color-secondary);
+  padding: 16px;
+  text-align: center;
+}
+
+.errorText {
+  font-size: 14px;
+  color: var(--text-color-error);
+  padding: 16px;
+  text-align: center;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: var(--text-color-primary);
+  padding: 16px;
+  text-align: center;
+}
+
+.customObjectList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customObjectContainer {
+  width: 100%;
+  background-color: var(--bg-color-quaternary);
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
+}
+
+.customObjectTrigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 16px 24px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.customObjectTrigger:hover {
+  background-color: var(--bg-color-light-gray);
+}
+
+.expandedCustomObjectTrigger {
+  border-bottom: 1px solid var(--bg-color-tertiary);
+}
+
+.customObjectContent {
+  background-color: var(--bg-color-quaternary);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.customObjectTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color-tertiary);
+  line-height: 1.5;
+}
+
+.formLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formLabel {
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--text-color-tertiary);
+}
+
+.tooltip {
+  gap: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-primary);
+  background-color: var(--color-white);
+}
+
+.tooltipIcon {
+  color: var(--border-color-checkbox);
+}

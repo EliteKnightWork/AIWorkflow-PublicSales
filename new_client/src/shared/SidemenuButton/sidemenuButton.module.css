@@ -1,0 +1,80 @@
+.sidemenuButton {
+  height: fit-content;
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 8px;
+  gap: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 160%;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-2);
+}
+
+.leftIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.rightIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* 状態: default */
+.default {
+  background-color: transparent;
+  color: var(--color-black-500);
+}
+
+/* 状態: secondary */
+.secondary {
+  background-color: var(--color-black-200);
+  color: var(--color-black-500);
+}
+
+.sidemenuButton:hover {
+  background-color: var(--color-black-100);
+  color: var(--color-black-500);
+}
+
+.sidemenuButton:focus {
+  background-color: var(--color-black-100);
+  border: 1px solid var(--color-blue-700);
+  color: var(--color-black-800);
+}
+
+.sidemenuButton:focus .rightIcon {
+  color: var(--color-black-500);
+}
+
+.sidemenuButton:disabled {
+  background-color: transparent;
+  color: var(--color-black-300);
+  cursor: not-allowed;
+}
+
+.sidemenuButton:disabled .rightIcon {
+  color: var(--color-black-500);
+}

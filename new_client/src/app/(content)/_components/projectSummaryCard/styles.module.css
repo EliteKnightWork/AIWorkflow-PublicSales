@@ -1,0 +1,81 @@
+.projectSummaryCard {
+  background-color: var(--bg-color-quaternary);
+  border-color: var(--border-color-primary);
+  border-radius: 16px;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projectBrowsedCard {
+  border-radius: 8px;
+  background-color: var(--bg-color-viewed);
+
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+}
+
+.projectSummaryCard:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.projectSummaryCardTitle {
+  font-size: 16px;
+  font-weight: bold;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.projectSummaryCardIconBadgeColumns {
+  padding-block: 16px;
+  width: fit-content;
+  max-width: 70%;
+}
+
+.deadlineText {
+  font-size: 12px;
+  padding-block: 12px;
+}
+
+.deadlineDateText {
+  font-size: 16px;
+  color: var(--app-orange-main);
+}
+
+.actionButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.projectPipelineButton {
+  background: none;
+  height: 100%;
+  font-weight: bold;
+}
+
+.projectPipelineButton:hover {
+  background-color: var(--bg-color-hover);
+}
+
+.favoriteActiveButton {
+  box-shadow: none;
+  padding: 12px;
+}
+
+.favorite-icon {
+  font-size: 24px;
+}
+
+.tooltipText {
+  font-size: 12px;
+  font-weight: bold;
+}

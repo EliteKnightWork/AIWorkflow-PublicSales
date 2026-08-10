@@ -1,0 +1,178 @@
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  min-width: 600px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+}
+
+.dialogHeader {
+  color: var(--app-black-secondary);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-secondary);
+  transition: color 0.2s;
+  position: absolute;
+  right: 20px;
+}
+
+.closeButton:hover {
+  opacity: 0.6;
+}
+
+.closeButton .material-icons {
+  font-size: 24px;
+}
+
+.dialogContent {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dialogTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--app-black-secondary);
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.presetTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--app-black-secondary);
+  font-family: "Noto Sans JP", sans-serif;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.noDifferenceSection {
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color-tertiary);
+  border-radius: 16px;
+  color: var(--text-color-tertiary);
+}
+
+.conditionInfo {
+  gap: 16px;
+}
+
+.removeConditions {
+  background-color: var(--bg-color-error);
+  padding: 16px;
+  gap: 16px;
+}
+
+.removeConditions .errorIcon {
+  color: var(--app-strong);
+  margin-block: auto;
+}
+
+.removeConditions .title {
+  color: var(--app-strong);
+}
+
+.addConditions {
+  background-color: var(--bg-color-add);
+  padding: 16px;
+  gap: 16px;
+}
+
+.addConditions .errorIcon {
+  color: var(--app-blue-main);
+  margin-block: auto;
+}
+
+.addConditions .title {
+  color: var(--app-blue-main);
+}
+
+.conditionChip {
+  padding: 4px;
+  color: var(--text-color-tertiary);
+  background-color: var(--bg-color-primary);
+  border-radius: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conditionChipList {
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.buttonContainer {
+  margin-top: 16px;
+}
+
+.saveNewButton {
+  background-color: var(--color-white);
+  color: var(--text-color-primary);
+  border: 1px solid var(--bg-color-tag-text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Noto Sans JP", sans-serif;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 12px 24px;
+}
+
+.saveNewButton:hover {
+  opacity: 0.6;
+}
+
+.overwriteButton {
+  background-color: var(--text-color-primary);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Noto Sans JP", sans-serif;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 12px 24px;
+}
+
+.overwriteButton:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.overwriteButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

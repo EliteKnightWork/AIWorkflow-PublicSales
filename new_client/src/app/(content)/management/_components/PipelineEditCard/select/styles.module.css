@@ -1,0 +1,97 @@
+/* Trigger (input-like) */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  background-color: var(--bg-color-primary);
+  border: 1px solid var(--border-color-separater);
+  border-radius: 8px;
+  padding: 14px;
+  cursor: text;
+}
+
+.trigger:focus-within {
+  border: 1.5px solid var(--app-blue-main);
+}
+
+.triggerDisabled {
+  background-color: var(--bg-color-disabled);
+  cursor: not-allowed;
+}
+
+/* Input field */
+.input {
+  flex: 1;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-color-primary);
+}
+
+/* Caret icon */
+.caret {
+  user-select: none;
+  color: var(--text-color-secondary);
+  font-size: 20px;
+}
+
+/* Popover content */
+.content {
+  background-color: var(--color-white);
+  border: 1px solid var(--border-color-separater);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+  overflow: hidden;
+}
+
+/* List */
+.list {
+  max-height: 240px;
+  overflow: auto;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+}
+
+.empty {
+  padding: 8px 10px;
+  color: var(--text-color-secondary);
+  font-size: 13px;
+}
+
+.item {
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color-primary);
+}
+
+.item:hover {
+  background-color: var(--gray-3);
+}
+
+.itemActive {
+  background-color: var(--gray-3);
+}
+
+.itemSelected {
+  font-weight: 600;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.clearButton:hover {
+  color: var(--text-color-primary);
+  background-color: var(--gray-3);
+}

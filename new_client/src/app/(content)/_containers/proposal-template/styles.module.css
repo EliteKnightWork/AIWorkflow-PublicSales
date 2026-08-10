@@ -1,0 +1,59 @@
+.proposalTemplateArea {
+  padding: 32px;
+}
+
+.messageArea {
+  padding: 8px;
+}
+
+.addTemplateButton {
+  padding-block: 8px;
+  padding-inline: 32px;
+  margin-inline: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-input);
+}
+
+.addTemplateButton:hover {
+  opacity: 0.6;
+}
+
+.templateListArea {
+  margin-top: 16px;
+  border: 1px solid var(--border-color-separater);
+  border-radius: 16px;
+}
+
+.templateItem:not(:last-child) {
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.templateItem {
+  padding-block: 16px;
+  padding-inline: 16px;
+  background-color: transparent;
+}
+
+.templateFileNameButton {
+  color: var(--app-blue-main);
+}
+
+.templateFileNameButton > p {
+  color: var(--app-blue-main);
+}
+
+.templateFileNameButton > p:hover {
+  text-decoration: underline;
+}
+
+.templateFileNameButton:hover {
+  opacity: 0.6;
+}
+
+.closeButton {
+  color: var(--text-color-primary);
+}
+
+.closeButton:hover {
+  opacity: 0.6;
+}

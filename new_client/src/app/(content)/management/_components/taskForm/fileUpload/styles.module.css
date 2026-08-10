@@ -1,0 +1,111 @@
+.fileUploadContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fileDropzone {
+  width: 100%;
+  min-height: 200px;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--color-white);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fileDropzone.dragging {
+  border: 1px solid var(--border-color-input);
+}
+
+.fileEmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.fileDropzoneText {
+  color: var(--text-color-gray);
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.fileUploadButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+  padding: 12px 16px;
+  border-radius: 64px;
+  color: var(--text-color-tertiary);
+  background: var(--bg-color-quaternary);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+}
+
+.fileUploadButton:hover {
+  opacity: 0.6;
+}
+
+.fileList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border-color-input);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: var(--color-white);
+}
+
+.fileListHeader {
+  font-weight: bold;
+  color: var(--text-color-secondary);
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.fileItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: var(--bg-color-tag);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.fileName {
+  color: var(--text-color-tertiary);
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+}
+
+.uploadIcon {
+  color: var(--border-color-input);
+  font-size: 16px;
+  width: 32px;
+}
+
+.fileIcon {
+  margin-right: 8px;
+  color: var(--text-color-tertiary);
+}
+
+.fileErrorText {
+  color: var(--text-color-error);
+  margin-top: 8px;
+  font-size: 14px;
+}

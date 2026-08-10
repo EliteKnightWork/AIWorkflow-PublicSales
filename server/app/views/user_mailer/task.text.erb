@@ -1,0 +1,23 @@
+いつもLabidをご利用いただき、ありがとうございます！
+
+<% if @days_before_due_date == 0 %>
+🚨本日がタスクの期日です🚨
+確認して対応しましょう！
+
+<% else %>
+🚨タスクの期日が<%= @days_before_due_date %>日後に迫っています🚨
+確認して対応しましょう！
+
+<% end %>
+<% require 'uri' %>
+<% @tasks.each do |task| %>
+--------------------------------------------------
+タスク名: <%= task.title %>
+期日: <%= task.due_date.strftime('%Y年%m月%d日') %>
+URL: <%= "#{ENV.fetch('CLIENT_ORIGIN')}/management?type=tasks&filters=#{URI.encode_www_form_component(task.title)}" %>
+--------------------------------------------------
+
+
+<% end %>
+
+*設定 > タスク通知 からこの通知をSlackで受け取るように設定することができます。

@@ -1,0 +1,157 @@
+.tableContainer {
+  width: 100%;
+}
+
+.tableRoot {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-separater);
+}
+
+.tableBody {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:nth-child(odd) {
+  background-color: var(--bg-color-quaternary);
+}
+
+.tableRow:nth-child(even) {
+  background-color: var(--bg-color-quaternary);
+}
+
+.displayAllRow {
+  padding: 16px 24px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.displayAllRow:hover {
+  cursor: pointer;
+}
+
+.expiredPipelineRow {
+  background-color: var(--bg-color-error) !important;
+}
+
+.warningPipelineRow {
+  background-color: var(--bg-color-warning) !important;
+}
+
+.tableCell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px 16px;
+  vertical-align: middle;
+  box-shadow: none;
+  white-space: nowrap;
+  max-width: 0;
+}
+
+.titleCell {
+  width: 40%;
+  min-width: 300px;
+}
+
+.titleBox {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-content: center;
+  align-items: center;
+}
+
+.deadlineCell {
+  width: 20%;
+  min-width: 200px;
+}
+
+.statusCell {
+  width: 10%;
+  min-width: 120px;
+}
+
+.assigneeCell {
+  width: 15%;
+  min-width: 120px;
+}
+
+.taskDescriptionCell {
+  width: 15%;
+  min-width: 200px;
+}
+
+.selectedTab {
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.selectedAssignedUserTab {
+  text-align: center;
+  color: var(--text-color-purple);
+  background-color: var(--bg-color-red);
+}
+
+.selectedStatusTab {
+  text-align: center;
+  padding: 1px 4px;
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.selectTriggerButton {
+  background-color: inherit;
+  padding: 0px;
+  justify-content: center;
+}
+
+.selectTriggerButton:focus {
+  outline: none;
+}
+
+.iconBadge {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  align-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+.emptyStateContainer {
+  width: 100%;
+  background-color: #f1f6fa;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyStateText {
+  margin-bottom: 40px;
+}
+
+.findProjectButton {
+  background-color: var(--app-orange-main);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  min-width: 256px;
+  height: 56px;
+  font-size: 16px;
+}

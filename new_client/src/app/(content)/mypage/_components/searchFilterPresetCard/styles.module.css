@@ -1,0 +1,88 @@
+.presetCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 12px;
+}
+
+.presetCardHeader {
+  width: 100%;
+}
+
+.presetCardHeaderCheckboxBox {
+  gap: 8px;
+}
+
+.presetCardButton {
+  color: var(--text-color-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.presetCardButtonIcon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 4px;
+}
+
+.presetCardHeaderCheckbox {
+  border-width: 2px !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 4px !important;
+}
+
+.presetCardHeaderCheckboxLabel {
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px !important;
+}
+
+.presetCardButton:hover {
+  opacity: 0.6;
+}
+
+.footerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  background-color: var(--bg-color-modal);
+  padding: 16px;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.cancelButton:hover {
+  opacity: 0.6;
+}
+
+.saveButton {
+  background-color: var(--bg-color-terliary);
+  color: var(--color-white);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.saveButton:hover {
+  opacity: 0.6;
+}

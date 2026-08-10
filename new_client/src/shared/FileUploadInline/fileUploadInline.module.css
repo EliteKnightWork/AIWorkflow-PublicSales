@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+}
+
+.dropzone {
+  width: 100%;
+  height: 56px;
+  padding: var(--spacing-4);
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-300);
+  background-color: var(--color-white-1000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.dropzone:hover:not([data-disabled]) {
+  border-color: var(--color-black-500);
+  background-color: var(--bg-color-hover);
+}
+
+.dropzone.dragging:not([data-disabled]) {
+  border-color: var(--color-blue-700);
+  background-color: var(--color-black-100);
+}
+
+.dropzone[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.placeholder {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--color-black-400);
+  text-align: center;
+  margin: 0;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.fileItem {
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-200);
+  background-color: var(--color-white-1000);
+}

@@ -1,0 +1,31 @@
+.notFoundFlex {
+  text-align: center;
+  font-size: 20px;
+}
+
+.messageBox {
+  padding: 40px;
+}
+
+.downloadButton {
+  border-radius: 64px;
+  color: var(--text-color-tertiary);
+  background: var(--bg-color-quaternary);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-block: 12px;
+  padding-inline: 16px;
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-a2);
+}
+
+.downloadButton:disabled {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}

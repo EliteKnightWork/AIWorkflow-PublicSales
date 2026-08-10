@@ -1,0 +1,90 @@
+inherit_from: .rubocop_todo.yml
+
+inherit_mode:
+  merge:
+    - Exclude
+
+plugins:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-rubycw
+  - rubocop-factory_bot
+
+AllCops:
+  DisabledByDefault: true
+  Exclude:
+    - 'gems/**/*'
+    - 'bin/**/*'
+    - 'scripts/csv_to_insert.rb'
+  NewCops: enable
+
+Bundler:
+  Enabled: true
+
+Gemspec:
+  Enabled: true
+
+Lint:
+  Enabled: true
+
+Performance:
+  Enabled: true
+
+Rubycw:
+  Enabled: true
+
+Security:
+  Enabled: true
+
+Rails:
+  Enabled: true
+
+RSpec:
+  Enabled: true
+
+FactoryBot:
+  Enabled: true
+
+# contextで日本語を使いたいので無効化
+RSpec/ContextWording:
+  Enabled: false
+
+# described_classを使わなくてもいい
+RSpec/DescribedClass:
+  Enabled: false
+
+# RSpecまわりのMetrix制限の緩和
+# 1つのテストケースあたりの行数
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 20 # default: 5
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+# ネストの深さ
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 5 # default: 3
+
+RSpec/PendingWithoutReason:
+  Enabled: false
+
+# Rails.env.local?ではなくRails.env.development? || Rails.env.test?の方が直感的なので
+Rails/EnvLocal:
+  Enabled: false
+
+# 上限3つだと厳しいので5つに緩和
+RSpec/MultipleExpectations:
+  Max: 5 # default: 3
+
+# 日本国内のみなのでi18nを使わなくてもいいよう無効化
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# テストコードではany_instanceを使う方がシンプルなので無効化
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10

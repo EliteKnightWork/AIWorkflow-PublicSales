@@ -1,0 +1,42 @@
+.taskCard {
+  min-width: 256px;
+  background-color: var(--bg-color-quaternary);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+}
+
+.expiredPipelineCard {
+  background-color: var(--bg-color-error);
+}
+
+.warningPipelineCard {
+  background-color: var(--bg-color-warning);
+}
+
+.taskCardTitle {
+  /* 2行まで表示し、それ以降は省略する */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--text-color-tertiary);
+  text-overflow: ellipsis;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%; /* 22.4px */
+}
+
+.iconBadgeColumns {
+  max-width: 100%;
+  width: fit-content;
+  white-space: no-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconBadge {
+  width: fit-content;
+}

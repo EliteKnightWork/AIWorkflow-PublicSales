@@ -1,0 +1,27 @@
+.filterClearButton {
+  /* 基本スタイル */
+  padding: 6px 12px;
+  color: var(--text-color-tertiary);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+/* ホバー時 */
+.filterClearButton:hover {
+  background-color: var(--gray-3);
+}
+
+/* 押下時（アクティブ状態） */
+.filterClearButton:active {
+  background-color: var(--gray-4);
+}
+
+/* 無効化状態 */
+.filterClearButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filterClearButton:disabled:hover {
+  background-color: transparent;
+}

@@ -1,0 +1,85 @@
+.ProjectChatSideBar {
+  height: 100vh;
+  width: 30vw;
+  z-index: 200;
+  background: var(--gradient-blue);
+  border-left: 1px solid var(--border-color-separater);
+  color: var(--button-color-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.ProjectChatSideBarFixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.sidebarColumn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0; /* allow children to shrink for overflow */
+  position: relative; /* アニメーションの上にコンテンツを配置 */
+  z-index: 1; /* アニメーションより前面に表示 */
+}
+
+.chatHeader {
+  padding: 24px;
+  font-weight: bold;
+  font-size: 24px;
+
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.CloseButton {
+  color: var(--button-color-tertiary);
+}
+
+.CloseButtonIcon {
+  font-size: 40px;
+}
+
+.chatBody {
+  text-align: center;
+  padding: 24px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chatBodyFullHeight {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.chatInput {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.chatInputFixed {
+  margin-bottom: 32px;
+}
+
+.absoluteBreathingBackgroundBox {
+  position: absolute;
+  right: -60px;
+  bottom: -50px;
+  pointer-events: none;
+  width: 320px;
+  height: 320px;
+  z-index: 0;
+}
+
+.messageExampleButton {
+  background: rgba(0, 0, 0, 0.1);
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-color-quaternary);
+}

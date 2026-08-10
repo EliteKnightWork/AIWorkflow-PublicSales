@@ -1,0 +1,189 @@
+.addButton {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-primary);
+  padding: 8px 16px;
+  gap: 8px;
+  font-size: 14px;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.addButton:hover {
+  cursor: pointer;
+}
+
+.moreHorizIcon:hover {
+  cursor: pointer;
+}
+
+.popoverContent {
+  color: var(--text-color-tertiary);
+  border-radius: 4px;
+  min-width: 260px;
+  background-color: white;
+  box-shadow:
+    hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.popoverContent[data-state="open"][data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+.popoverContent[data-state="open"][data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+.popoverContent[data-state="open"][data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+.popoverContent[data-state="open"][data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+
+.statusHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px;
+}
+
+.popoverArrow {
+  fill: var(--color-white);
+}
+
+.popoverClose {
+  all: unset;
+  font-family: inherit;
+  border-radius: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-tertiary);
+}
+.popoverClose:hover {
+  cursor: pointer;
+}
+
+.statusField {
+  all: unset;
+  font-size: 14px;
+}
+
+.statusAddButton,
+.statusSaveButton {
+  all: unset;
+  cursor: pointer;
+  background-color: var(--app-blue-main);
+  color: var(--color-white);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.statusAddButton:disabled,
+.statusSaveButton:disabled {
+  background-color: unset;
+  color: var(--text-color-gray);
+  cursor: not-allowed !important;
+}
+
+.stageContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color-separater);
+  padding-bottom: 16px;
+}
+
+.stageTitle {
+  font-size: 12px;
+  font-weight: 700px;
+}
+
+.editStatusBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 16px;
+}
+
+.editStatusCloseButton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.editStatusInput {
+  max-width: 140px;
+  border: 1px solid var(--border-color-separater);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.addStatusButton:hover {
+  cursor: pointer;
+}
+
+/* modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-inline: auto;
+
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8000;
+  padding-inline: 24px;
+  padding-block: 16px;
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  padding: 16px !important;
+  font-weight: bold;
+  display: flex;
+}
+
+.headerTitle {
+  margin-inline: auto;
+  font-size: 16px;
+  margin-block: auto;
+}
+
+.modalContent {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip {
+  gap: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-primary);
+  background-color: var(--color-white);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px var(--shadow-color-light);
+  z-index: 9999;
+}

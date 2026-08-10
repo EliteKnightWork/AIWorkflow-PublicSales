@@ -1,0 +1,44 @@
+.bidCompanyCardBox {
+  border-radius: 16px;
+  padding: 32px;
+  background-color: var(--bg-color-quaternary);
+}
+
+.bidCompanyTitleBox {
+  display: flex;
+  align-items: center;
+}
+
+.bidCompanyIcon {
+  color: var(--text-color-tertiary);
+  font-size: 32px !important;
+  margin-block: auto;
+  margin-right: 16px;
+}
+
+.bidCompanyTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-block: auto;
+}
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bidCompanyButton {
+  border-radius: 40px;
+  padding-inline: 16px;
+  padding-block: 8px;
+  font-size: 14px;
+  color: var(--text-color-tertiary);
+  background-color: var(--bg-color-modal);
+  min-height: 50px;
+}
+
+.bidCompanyButton:hover {
+  background-color: var(--border-color-separater);
+  cursor: pointer;
+}

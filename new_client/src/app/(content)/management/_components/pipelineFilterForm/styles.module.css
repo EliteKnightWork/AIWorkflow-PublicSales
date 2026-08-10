@@ -1,0 +1,286 @@
+.pipelineFilterForm {
+  padding: 12px;
+  gap: 6px;
+  width: 100%;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.formTitle {
+  color: var(--app-black-secondary);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.select {
+  background-color: var(--bg-color-primary);
+  width: 100%;
+  height: 56px;
+  border: 1px solid var(--border-color-gray);
+  padding: 0px 16px;
+  border-radius: 8px;
+  appearance: none;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  padding: 16px 24px;
+  min-width: 100px;
+  font-weight: bold;
+  font-size: 14px;
+  flex: 1;
+  border-radius: var(--10, 40px);
+}
+
+.submitButton {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  padding: 16px 24px;
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 14px;
+  flex: 1;
+  border-radius: var(--10, 40px);
+}
+
+.buttonBox {
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.buttonBox button:hover {
+  opacity: 0.8;
+}
+
+.dateRangeContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+}
+
+.dateRangeSeparator {
+  color: var(--text-color-secondary);
+  font-size: 14px;
+}
+
+.selectedTab {
+  margin: 2px;
+  border-radius: 2px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.selectedAssignedUserTab {
+  color: var(--text-color-purple);
+  background-color: var(--bg-color-red);
+}
+
+.unselectedTab {
+  border-radius: 2px;
+  background-color: var(--bg-color-quaternary);
+  color: var(--text-color-secondary);
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.datePickerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color-quaternary);
+  border-radius: 8px;
+  height: 56px;
+  flex: 1;
+  min-width: 0;
+  padding: 0px 16px;
+  border: 1px solid var(--border-color-gray);
+}
+
+.multilineContainer {
+  height: auto;
+  min-height: 120px;
+  align-items: stretch;
+}
+
+.datePickerContainer .react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* Remove orange focus border from AppDatePicker input in this form */
+.datePickerContainer input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+.datePickerContainer input:focus,
+.datePickerContainer input:focus-visible {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.datePickerContainer input {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 0px;
+  font-size: 14px;
+  color: var(--text-color-primary);
+}
+
+.datePickerContainer input:focus {
+  outline: none;
+}
+
+/* 通常のテキスト入力にも使う */
+.textInput {
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  color: var(--text-color-primary);
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* number入力のスピンボタンを非表示（Chrome/Safari/Edge/Opera） */
+.textInput::-webkit-outer-spin-button,
+.textInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* number入力のスピンボタンを非表示（Firefox） */
+.textInput[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.textareaInput {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+  color: var(--text-color-primary);
+  outline: none;
+  resize: none;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-color-separater);
+  width: 100%;
+}
+
+.disabledButton {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.customFilterGroup {
+  border: 1px solid var(--border-color-separater);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+
+.customFilterGroupHeaderButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 16px 24px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.customFilterGroupHeaderButton:hover {
+  background-color: var(--bg-color-light-gray);
+}
+
+.customFilterGroupHeaderButton:focus-visible {
+  outline: 2px solid var(--border-color-separater);
+  outline-offset: 2px;
+}
+
+.customFilterGroupTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-color-tertiary);
+}
+
+.customFilterChevron {
+  color: var(--text-color-secondary);
+  transition: transform 0.2s ease;
+}
+
+.customFilterGroupHeaderButton[aria-expanded="true"] .customFilterChevron {
+  transform: rotate(180deg);
+}
+
+.customFilterGroupHeaderButton[aria-expanded="true"] {
+  border-bottom: 1px solid var(--bg-color-tertiary);
+}
+
+.customFilterGroupBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px 24px;
+  background-color: var(--bg-color-quaternary);
+}
+
+.customFilterItemBox {
+  padding: 0;
+  gap: 12px;
+}
+
+.customFilterGroupActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.customFilterResetButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  padding: 12px 20px;
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: var(--10, 40px);
+  border: none;
+  cursor: pointer;
+}
+
+.customFilterResetButton:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.customFilterResetButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

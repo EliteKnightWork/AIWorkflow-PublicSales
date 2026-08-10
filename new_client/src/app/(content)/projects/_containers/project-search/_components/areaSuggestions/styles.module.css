@@ -1,0 +1,63 @@
+.titleBox {
+  padding-inline: 32px;
+  padding-block: 16px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.listBox {
+  padding-inline: 32px;
+  padding-block: 16px;
+}
+
+.regionListBox {
+  flex: 1;
+  font-size: 16px;
+}
+
+.regionListBoxItem {
+  padding-block: 8px;
+  padding-inline: 8px;
+  cursor: pointer;
+}
+
+.selectedRegion {
+  font-weight: bold;
+  color: var(--text-color-tertiary);
+}
+
+.unselectedRegion {
+  color: var(--text-color-secondary);
+}
+
+.checkbox {
+  margin: 8px;
+}
+
+.selectedParentBox {
+  background-color: var(--app-orange-light);
+}
+
+.parentBox:hover {
+  background-color: var(--app-orange-light) !important;
+  transform: scale(1.05);
+}
+
+.regionText {
+  font-size: 16px;
+  flex: 1;
+}
+
+.prefectureListBoxItem {
+  padding-block: 8px;
+}
+
+.prefectureListBoxItem:hover {
+  opacity: 0.6;
+}
+.prefectureText {
+  font-size: 16px;
+  flex: 1;
+}

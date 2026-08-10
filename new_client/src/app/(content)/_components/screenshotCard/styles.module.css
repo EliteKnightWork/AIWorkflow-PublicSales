@@ -1,0 +1,25 @@
+.body {
+  background-color: var(--bg-color-primary);
+  padding: 24px;
+  gap: 24px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.screenshot {
+  background-color: var(--bg-color-primary);
+  object-fit: contain;
+  position: relative !important;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-primary);
+  flex: 1 1 calc(20% - 8px);
+  max-width: min(calc(20% - 8px), 160px);
+
+  @media screen and (max-width: 540px) {
+    flex: 1 1 calc(50% - 8px);
+    max-width: min(calc(50% - 8px), 160px);
+  }
+}
+
+.screenshot:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "d60abd19-309e-407e-8d23-3ce7f66eafa8",
+		"name": "labid_API_testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42279889"
+	},
+	"item": [
+		{
+			"name": "ProjectsPrefectureUnauthorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response must be 200 Successful\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_BASE_URL}}/v1/projects/search?prefectures[]=25",
+					"host": [
+						"{{API_BASE_URL}}"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"search"
+					],
+					"query": [
+						{
+							"key": "prefectures[]",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProjectsMultiplePrefecturesUnauthorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response must be 401 Unauthorized\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_BASE_URL}}/v1/projects/search?prefectures[]=25&prefectures[]=26",
+					"host": [
+						"{{API_BASE_URL}}"
+					],
+					"path": [
+						"v1",
+						"projects",
+						"search"
+					],
+					"query": [
+						{
+							"key": "prefectures[]",
+							"value": "25"
+						},
+						{
+							"key": "prefectures[]",
+							"value": "26"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

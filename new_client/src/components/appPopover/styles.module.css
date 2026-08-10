@@ -1,0 +1,60 @@
+.popoverContent {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  box-shadow:
+    0 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0 10px 20px -15px rgba(22, 23, 24, 0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid var(--border-color-separater);
+}
+
+.popoverHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--bg-color-primary);
+  border-radius: 12px 12px 0 0;
+}
+
+.popoverTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+  margin: 0;
+}
+
+.popoverCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.popoverCloseButton:hover {
+  background-color: var(--bg-color-quaternary);
+}
+
+.popoverCloseButton:focus {
+  outline: none;
+  background-color: var(--bg-color-quaternary);
+}
+
+.popoverContentBody {
+  padding: 0;
+}
+
+.popoverArrow {
+  fill: var(--color-white);
+  stroke: var(--border-color-separater);
+  stroke-width: 1px;
+}

@@ -1,0 +1,78 @@
+.informationContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #f9f9f9ff;
+  padding: 80px;
+
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    padding: 24px 0px 24px 0px;
+    gap: 48px;
+  }
+}
+
+.informationContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 50%;
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 85%;
+  margin: 8px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--app-orange-tertiary);
+}
+
+.information {
+  width: 90%;
+  padding: 7px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-primary);
+  box-shadow: 2px 2px 2px 2px var(--border-color-primary);
+  background-color: var(--bg-color-primary);
+
+  @media screen and (max-width: 540px) {
+    padding: 5px;
+  }
+}
+
+.informationImage {
+  width: 50%;
+  margin: 5px 10px;
+  border-radius: 8px;
+  object-fit: contain;
+  aspect-ratio: 181 / 134;
+  position: relative;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 540px) {
+    margin: 5px;
+  }
+}
+
+.informationDescription {
+  width: 50%;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+
+  @media screen and (max-width: 540px) {
+    font-size: 12px;
+  }
+}

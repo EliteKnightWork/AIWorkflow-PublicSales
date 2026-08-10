@@ -1,0 +1,33 @@
+.bidCompanyListBox {
+  background-color: var(--bg-color-tertiary);
+  padding: 40px;
+}
+
+.pagenatesPerBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.bidCompanyCardsBox {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.paginationBox {
+  margin-top: 40px;
+  margin-inline: auto;
+}
+
+.noBidCompanyBox {
+  font-weight: 700;
+  text-align: center;
+  margin-block: 48px;
+
+  @media screen and (max-width: 540px) {
+    height: calc(100dvh - 320px);
+  }
+}

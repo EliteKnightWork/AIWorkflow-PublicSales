@@ -1,0 +1,60 @@
+.errorContainer {
+  background-color: var(--color-white);
+  min-height: calc(100vh - 200px);
+  padding: 80px 24px;
+}
+
+.errorContent {
+  max-width: 600px;
+  text-align: center;
+}
+
+.errorTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color-primary);
+}
+
+.errorDescription {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+}
+
+.mypageButton {
+  background-color: var(--app-orange-tertiary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 24px;
+  border: none;
+}
+
+.mypageButton:hover {
+  background-color: var(--app-orange-secondary);
+}
+
+.retryButton {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 24px;
+  color: var(--text-color-tertiary);
+  border: 1px solid var(--border-color-separater);
+  box-shadow: none;
+}
+
+@media (max-width: 540px) {
+  .errorContainer {
+    padding: 40px 16px;
+    min-height: calc(100vh - 150px);
+  }
+
+  .errorTitle {
+    font-size: 20px;
+  }
+
+  .errorDescription {
+    font-size: 14px;
+  }
+}

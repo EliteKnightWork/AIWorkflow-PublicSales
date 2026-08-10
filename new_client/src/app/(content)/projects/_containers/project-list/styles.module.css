@@ -1,0 +1,35 @@
+.projectListBox {
+  box-shadow: none;
+}
+
+.unAuthMobileProjectListBox {
+  margin-bottom: 64px;
+}
+
+.pagenatesPerBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.paginationBox {
+  margin-inline: auto;
+}
+
+.noProjectBox {
+  font-weight: 700;
+  text-align: center;
+  margin-block: 48px;
+
+  @media screen and (max-width: 540px) {
+    height: calc(100dvh - 320px);
+  }
+}
+
+.loadingDataText {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 8px;
+}

@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.dialogContainer {
+  padding: 0;
+}
+
+.limitedBox {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  width: 100%;
+  margin-inline: auto;
+}
+
+.limitedBoxSp {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 16px;
+
+  text-align: center;
+  vertical-align: middle;
+
+  min-width: 90vw;
+  margin-inline: 24px;
+}
+
+.limitedBoxHeader {
+  color: var(--text-color-tertiary);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.limitedBoxDescription {
+  background-color: var(--bg-color-tertiary);
+  padding: 16px 24px;
+  font-size: 16px;
+}
+
+.limitedButtonArea {
+  margin-inline: auto;
+}
+
+.limitedBoxIcon {
+  font-size: 40px !important;
+  color: var(--app-blue-main);
+}
+
+.limitedBoxWarning {
+  color: var(--text-color-tertiary);
+  font-size: 14px;
+}
+
+.emphasisColor {
+  color: var(--app-orange-main);
+}
+
+.demoButton {
+  background-color: var(--app-orange-tertiary, #e85d04);
+  color: var(--color-white);
+  padding: 16px 48px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: opacity 0.2s ease-in-out;
+  margin-bottom: 8px;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.demoButton:hover {
+  opacity: 0.9;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.closeButton span {
+  color: var(--color-gray-600, #4b5563);
+  font-size: 24px;
+}

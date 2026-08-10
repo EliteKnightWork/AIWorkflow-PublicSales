@@ -1,0 +1,21 @@
+.paginationButton {
+  color: var(--text-color-secondary);
+  background-color: var(--bg-color-quaternary);
+  width: 48px;
+  height: 48px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.paginationButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.activePaginationButton {
+  background-color: var(--bg-color-modal);
+  color: var(--text-color-tertiary);
+  font-weight: bold;
+  border: 1px solid var(--border-color-blue);
+}

@@ -1,0 +1,33 @@
+.presetListBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color-quaternary);
+  padding: 0px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color-separater);
+}
+
+.searchInputBox {
+  padding-block: 24px;
+}
+
+.presetBox {
+  padding: 8px;
+}
+
+.presetCardBox {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.selectable {
+  transition: background 0.2s;
+  background-color: var(--color-white);
+}
+
+.selectable:hover {
+  background-color: var(--gray-6);
+  opacity: 0.6;
+}

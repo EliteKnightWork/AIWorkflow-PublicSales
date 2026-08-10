@@ -1,0 +1,72 @@
+.taskCard {
+  background-color: var(--bg-color-quaternary);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+}
+
+.expiredTaskCard {
+  background-color: var(--bg-color-error);
+}
+
+.warningTaskCard {
+  background-color: var(--bg-color-warning);
+}
+
+.taskCardTitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--text-color-tertiary);
+  text-overflow: ellipsis;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%; /* 22.4px */
+  margin-right: auto;
+}
+
+.iconBadgeColumns {
+  max-width: 100%;
+  width: fit-content;
+  white-space: no-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.iconBadge {
+  width: fit-content;
+}
+
+.menuTrigger {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color-tertiary);
+}
+
+.menuContent {
+  background-color: var(--bg-color-quaternary);
+  width: 264px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.menuItem {
+  padding-inline: 24px;
+  padding-block: 16px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menuItem:hover {
+  opacity: 0.7;
+}
+
+.menuItem:not(:last-child) {
+  border-bottom: 1px solid #f1f6fa;
+}
+
+.deleteText {
+  color: var(--text-color-error);
+}

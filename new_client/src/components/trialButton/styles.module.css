@@ -1,0 +1,35 @@
+.trialButton {
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: 40px;
+  background-color: var(--app-orange-tertiary);
+  box-shadow: 0 0 0 2px var(--app-orange-tertiary);
+  font-size: 16px;
+  padding: 12px 20px;
+  height: 40px;
+
+  @media screen and (max-width: 540px) {
+    padding: 13px 14px;
+    font-size: 14px;
+    box-shadow: none;
+  }
+}
+
+.wideTrialButton {
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: 48px;
+  font-size: 22px;
+  padding: 15px 45px;
+  height: 60px;
+
+  @media screen and (max-width: 540px) {
+    width: 320px;
+    font-size: 20px;
+  }
+}
+
+.trialButton:hover,
+.wideTrialButton:hover {
+  cursor: pointer;
+}

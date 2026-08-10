@@ -1,0 +1,151 @@
+.statusBoard {
+  min-width: 288px;
+  padding-bottom: 48px;
+  background-color: var(--bg-color-quaternary);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: visible;
+  position: relative;
+}
+
+.disabledDropTarget {
+  opacity: 0.4;
+  filter: grayscale(60%);
+  cursor: not-allowed;
+}
+
+.statusHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--bg-color-quaternary);
+  padding: 16px 16px 8px 16px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.statusSortableArea {
+  flex: 1;
+  gap: 16px;
+  padding: 8px 16px 16px 16px;
+  min-height: 0;
+  overflow-y: auto;
+  max-height: calc(100% - 60px);
+}
+
+.statusSortableArea:empty::after {
+  content: "案件をここにドロップ";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: var(--text-color-tertiary);
+  font-size: 12px;
+  border: 2px dashed var(--gray-6);
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.buttonArea {
+  padding: 32px 48px 16px 8px;
+  position: sticky;
+  left: 0px;
+}
+
+.searchInput {
+  background-color: inherit;
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  margin-block: 8px;
+  color: var(--text-color-tertiary);
+}
+
+.searchInputBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-6);
+  border-radius: 9999px;
+  padding: 8px 12px;
+  gap: 8px;
+  width: calc(100% - 280px);
+  background: var(--bg-color-quaternary);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+  z-index: 2;
+}
+
+.scrollableContainer {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  overflow-y: hidden;
+}
+
+.pipelineBoard {
+  height: 100%;
+  align-items: stretch;
+  min-width: fit-content;
+}
+
+.roundButton {
+  background: var(--bg-color-quaternary);
+}
+
+.stageList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+
+.stageList:last-child {
+  padding-right: 40px;
+}
+
+.stageListFlex {
+  height: calc(100% - 70px);
+}
+
+.stageHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 2px solid;
+}
+
+.stageTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.doingColor {
+  color: var(--app-orange-main);
+  border-color: var(--app-orange-main);
+}
+
+.doneColor {
+  color: var(--text-color-purple);
+  border-color: var(--text-color-purple);
+}
+
+.addButton {
+  color: var(--text-color-tertiary);
+  padding-inline: 16px;
+  padding-block: 8px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background-color: var(--bg-color-quaternary);
+}

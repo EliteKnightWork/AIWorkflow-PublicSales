@@ -1,0 +1,6 @@
+/* message box */
+.messageBox[class] {
+  background-color: var(--bg-color-tertiary);
+  border-radius: 16px;
+  width: 100%;
+}

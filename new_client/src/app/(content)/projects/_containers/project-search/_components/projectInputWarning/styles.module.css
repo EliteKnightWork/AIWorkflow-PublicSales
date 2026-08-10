@@ -1,0 +1,37 @@
+.projectInputWarning {
+  background-color: var(--bg-color-error);
+  padding: 16px;
+}
+
+.errorIcon {
+  color: var(--text-color-error);
+}
+
+.warningText {
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--text-color-error);
+  font-style: normal;
+}
+
+.warningTextBox {
+  margin-right: auto;
+  gap: 12px;
+}
+
+.closeBtn {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-color-error);
+  padding-inline: 12px;
+  padding-block: 8px;
+}
+
+.chip {
+  background-color: var(--bg-color-primary);
+  padding: 4px;
+  font-size: 12px;
+  color: var(--text-color-tertiary);
+  margin-inline: 4px;
+  border-radius: 2px;
+}

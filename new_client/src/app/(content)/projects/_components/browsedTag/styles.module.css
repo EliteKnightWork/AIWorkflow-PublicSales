@@ -1,0 +1,18 @@
+.browsedTag {
+  color: var(--bg-color-tag-text-active);
+  font-weight: bold;
+  border-radius: 2px;
+  border: 1px solid var(--border-color-separater);
+  background: var(--bg-color-quaternary);
+}
+
+.browsedSmallTag {
+  padding: 4px;
+  font-size: 12px;
+}
+
+.browsedLargeTag {
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+}

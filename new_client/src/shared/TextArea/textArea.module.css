@@ -1,0 +1,36 @@
+.textArea {
+  width: 100%;
+  min-height: 160px;
+  padding: var(--spacing-4);
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-300);
+  box-shadow: none;
+  background-color: var(--color-white-1000);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--color-black-800);
+  background-clip: border-box;
+}
+
+.textArea textarea::placeholder {
+  font-weight: 700;
+  color: var(--color-black-400);
+}
+
+.textArea:hover {
+  border-color: var(--color-black-500);
+  background-color: var(--bg-color-hover);
+  background-clip: border-box;
+}
+
+.textArea:focus-within {
+  border-color: var(--color-blue-700);
+  background-color: var(--color-black-100);
+  background-clip: border-box;
+}
+
+.textArea::selection {
+  background-color: var(--bg-color-hover);
+}

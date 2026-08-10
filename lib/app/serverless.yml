@@ -1,0 +1,156 @@
+service: labid-sqs-lambda
+
+frameworkVersion: '4'
+
+plugins:
+  - serverless-python-requirements
+  - serverless-offline
+  - serverless-localstack
+  - serverless-dotenv-plugin
+  - serverless-ignore
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    usePoetry: false
+    slim: true
+  localstack:
+    stages:
+      - local
+    region: ap-northeast-1
+    autostart: false
+  awsAccessKeyId:
+    local: 'root'
+    dev: ''
+    prod: ''
+  sqsQueueArn:
+    local: 'arn:aws:sqs:ap-northeast-1:000000000000:proposal-create-queue'
+    dev: 'arn:aws:sqs:ap-northeast-1:677601128272:proposal-create-queue-dev'
+    prod: 'arn:aws:sqs:ap-northeast-1:677601128272:proposal-create-queue-prod'
+  sqsDlqArn:
+    local: 'arn:aws:sqs:ap-northeast-1:000000000000:proposal-create-dead-letter-queue'
+    dev: 'arn:aws:sqs:ap-northeast-1:677601128272:proposal-create-dead-letter-queue-dev'
+    prod: 'arn:aws:sqs:ap-northeast-1:677601128272:proposal-create-dead-letter-queue-prod'
+  anthropicApiKey:
+    local: ${env:ANTHROPIC_API_KEY}
+    dev: ${env:ANTHROPIC_API_KEY}
+    prod: ${env:ANTHROPIC_API_KEY}
+  s3BucketName:
+    local: 'labid-project-document-bucket-local'
+    dev: 'labid-project-document-bucket-dev'
+    prod: 'labid-project-document-bucket-prod'
+  s3EndpointUrl:
+    local: 'http://minio:9000'
+    dev: 'https://s3.ap-northeast-1.amazonaws.com'
+    prod: 'https://s3.ap-northeast-1.amazonaws.com'
+  apiEndpointUrl:
+    local: 'http://app:3000'
+    dev: 'https://dev-api.labid.jp'
+    prod: 'https://api.labid.jp'
+  s3DocumentBucketArn:
+    local: 'arn:aws:s3:::labid-project-document-bucket-local'
+    dev: 'arn:aws:s3:::labid-project-document-bucket-dev'
+    prod: 'arn:aws:s3:::labid-project-document-bucket-prod'
+
+functions:
+  createProposal:
+    handler: handler.create_proposal
+    timeout: 900
+    logRetentionInDays: 7
+    role:
+      Fn::GetAtt:
+        - CreateProposalFunctionRole
+        - Arn
+    events:
+      - sqs:
+          arn: ${self:custom.sqsQueueArn.${opt:stage, 'local'}}
+          batchSize: 5
+    environment:
+      NODE_ENV: ${opt:stage, 'local'}
+      ANTHROPIC_API_KEY: ${self:custom.anthropicApiKey.${opt:stage, 'local'}}
+      S3_BUCKET_NAME: ${self:custom.s3BucketName.${opt:stage, 'local'}}
+      S3_ENDPOINT_URL: ${self:custom.s3EndpointUrl.${opt:stage, 'local'}}
+      # AWS_ENDPOINT_URL: 'http://localhost:4566'
+      API_ENDPOINT_URL: ${self:custom.apiEndpointUrl.${opt:stage, 'local'}}
+  notifyFailedProposal:
+    handler: handler.notify_failed_proposal
+    timeout: 300
+    logRetentionInDays: 7
+    events:
+      - sqs:
+          arn: ${self:custom.sqsDlqArn.${opt:stage, 'local'}}
+          batchSize: 5
+    environment:
+      NODE_ENV: ${opt:stage, 'local'}
+      API_ENDPOINT_URL: ${self:custom.apiEndpointUrl.${opt:stage, 'local'}}
+
+resources:
+  Conditions:
+    IsLocal:
+      Fn::Equals:
+        - ${self:provider.stage}
+        - 'local'
+  Resources:
+    LabidSqsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: proposal-create-queue
+        RedrivePolicy:
+          deadLetterTargetArn:
+            Fn::GetAtt: [JobDLQ, Arn]
+          maxReceiveCount: 1
+      Condition: IsLocal
+    JobDLQ:
+      Type: AWS::SQS::Queue
+      Condition: IsLocal
+      Properties:
+        QueueName: proposal-create-dead-letter-queue
+    CreateProposalFunctionRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: create-proposal-function-role-${opt:stage, 'local'}
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: lambda.amazonaws.com
+              Action:
+                - sts:AssumeRole
+        Policies:
+          - PolicyName: receive-message-policy-${opt:stage, 'local'}
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - sqs:ReceiveMessage
+                    - sqs:DeleteMessage
+                    - sqs:GetQueueUrl
+                    - sqs:GetQueueAttributes
+                  Resource: ${self:custom.sqsQueueArn.${opt:stage, 'local'}}
+          - PolicyName: document-bucket-policy-${opt:stage, 'local'}
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - s3:PutObject
+                    - s3:GetObject
+                  Resource: "${self:custom.s3DocumentBucketArn.${opt:stage, 'local'}}/*"
+          - PolicyName: cloudwatch-logs-policy-${opt:stage, 'local'}
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource: 'arn:aws:logs:*:*:*'
+provider:
+  name: aws
+  runtime: python3.12
+  region: ap-northeast-1
+  profile: labid
+  stage: ${opt:stage, 'local'}

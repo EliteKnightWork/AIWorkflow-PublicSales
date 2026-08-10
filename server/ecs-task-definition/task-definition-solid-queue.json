@@ -1,0 +1,34 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "labid-solid-queue-dev",
+      "image": "677601128272.dkr.ecr.ap-northeast-1.amazonaws.com/labid-server-dev:latest",
+      "cpu": 0,
+      "essential": true,
+      "command": [
+        "bin/jobs",
+        "start"
+      ],
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/logs/dev/labid-solid-queue-dev",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "labid-solid-queue-dev"
+        }
+      }
+    }
+  ],
+  "family": "labid-solid-queue-dev",
+  "taskRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-task-role-dev",
+  "executionRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-execution-role-dev",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512"
+}

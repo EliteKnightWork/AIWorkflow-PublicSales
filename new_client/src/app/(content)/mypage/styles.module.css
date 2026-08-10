@@ -1,0 +1,128 @@
+.mypageContentHeader {
+  background-color: var(--color-white);
+  font-size: 12px;
+  min-height: 64px;
+}
+
+.mypageContentBox {
+  background-color: var(--bg-color-tertiary);
+  height: "inherit";
+  width: 100%;
+}
+
+.mypageContentBoard {
+  background-color: var(--color-white);
+  padding-inline: 16px;
+  border-radius: 16px;
+  gap: 16px;
+  position: relative;
+}
+
+.mypageContentBoxTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mypageExpandIcon {
+  font-size: 32px !important;
+}
+
+.mypageContentHeader {
+  cursor: pointer;
+  padding-block: 8px;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.projectCardBox {
+  max-width: 25%;
+  min-width: 25%;
+}
+
+.projectCardBox p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.leftScrollButton {
+  position: absolute;
+  left: 16px;
+  margin-left: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border-color-primary);
+  align-self: center;
+  height: 56px;
+  width: 56px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+  z-index: 11;
+}
+
+.rightScrollButton {
+  position: absolute;
+  right: 16px;
+  margin-right: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border-color-primary);
+  align-self: center;
+  height: 56px;
+  width: 56px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+}
+
+.leftScrollButton:hover,
+.rightScrollButton:hover {
+  cursor: pointer;
+}
+
+.rightScrollIcon,
+.leftScrollIcon {
+  color: var(--color-black);
+  font-size: 42px !important;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0px 8px;
+  gap: 16px;
+  min-width: 100%;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.messageBox {
+  padding-block: 24px;
+  padding-inline: 40px;
+  background-color: var(--bg-color-tertiary);
+  border-radius: 16px;
+  width: 100%;
+}
+
+.messageText {
+  font-weight: 700;
+}
+
+.messageButton {
+  font-weight: 600;
+  color: var(--text-color-tertiary);
+  box-shadow: none;
+  border: 1px solid var(--text-color-tertiary);
+  padding: 16px;
+}
+
+.messageButtonBox {
+  min-width: 128px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandableContent {
+  padding-bottom: 16px;
+}

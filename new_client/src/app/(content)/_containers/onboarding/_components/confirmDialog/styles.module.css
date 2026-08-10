@@ -1,0 +1,86 @@
+/* モーダル */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50%;
+  max-height: 50%;
+  padding: 20px;
+  background-color: var(--bg-color-primary);
+  border-radius: 16px;
+  color: var(--color-black);
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8003;
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 48px;
+  gap: 48px;
+}
+
+.description {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 40px;
+  padding: 16px 24px;
+  width: 160px;
+  max-width: 40%;
+  font-weight: bold;
+}
+
+.submitButton {
+  background: var(--app-orange-main);
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 16px 24px;
+  width: 160px;
+}
+
+.cancelButton:hover,
+.submitButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.cancelButton:disabled {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+}

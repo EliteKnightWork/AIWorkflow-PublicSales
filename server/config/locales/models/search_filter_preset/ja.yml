@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      search_filter_preset:
+        period: 期間
+  errors:
+    messages:
+      any_condition_required: 検索条件を1つ以上指定してください

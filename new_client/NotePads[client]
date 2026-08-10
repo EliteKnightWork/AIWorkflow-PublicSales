@@ -1,0 +1,23 @@
+フロントエンドのディレクトリ構成と、実装の際に参考にしてほしい既存ファイルの例について説明します。
+
+■ フロントエンドのディレクトリ構成
+Next.jsのApp Routerのディレクトリ構成を採用しています。
+---
+src/
+├── api/                              # バックエンドAPI関連のコード
+├── app/                              # Next.js App Router のメインディレクトリ
+│   ├── layout.tsx                    # 共通レイアウト
+│   ├── page.tsx                      # ルートページ
+│   ├── api/                          # Next.js API関連のコード
+│   ├── _components/                  # アプリ全体で共有するコンポーネント
+│   └── (content)/                    # コンテンツ用のルート
+├── components/                       # 共通コンポーネント
+├── context/                         # Reactコンテキスト
+├── hooks/                           # カスタムフック
+├── lib/                             # 共通ライブラリ
+├── styles/                          # グローバルスタイル
+├── utils/                           # 共通ユーティリティ
+└── constants.ts                     # 定数
+└── middleware.ts                    # ミドルウェア
+---
+

@@ -1,0 +1,88 @@
+/* round select button */
+.roundButton[class] {
+  border-radius: 64px;
+  color: var(--text-color-tertiary);
+  border-color: var(--color-black);
+  box-shadow: 0px 2px 8px 0px #00000029;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-block: 12px;
+  padding-inline: 16px;
+}
+
+.roundButton:hover {
+  cursor: pointer;
+}
+
+.roundButton.white {
+  color: var(--bg-color-quaternary);
+}
+
+.roundButtonBox[class] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.roundButtonIcon[class] {
+  font-size: 16px !important;
+}
+
+/* radio button */
+.radioButtonText[class] {
+  /* <Text><input</Text>と言う使い方を想定 */
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radioButtonText[class] input {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.radioButtonText[class] input:checked {
+  accent-color: var(--color-secondary);
+}
+
+/* キャンセルボタン */
+.cancelButton[class] {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  font-weight: bold;
+  min-width: 200px;
+}
+
+/* submit button */
+.submitButton[class] {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  font-weight: bold;
+  min-width: 200px;
+}
+
+/* action button */
+.actionButton[class] {
+  border-radius: 8px;
+  color: var(--text-color-tertiary);
+  border: 1px solid var(--border-color-separater);
+  box-shadow: none;
+}
+
+.actionActiveButton[class] {
+  color: var(--app-orange-main);
+  border: 1px solid var(--app-orange-secondary);
+  background: var(--app-orange-light);
+  box-shadow: none;
+}

@@ -1,0 +1,503 @@
+name: Deploy to Amazon ECS (Dev)
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_client:
+        description: 'Deploy client'
+        type: boolean
+        default: true
+      deploy_server:
+        description: 'Deploy server'
+        type: boolean
+        default: true
+      deploy_admin_client:
+        description: 'Deploy admin client'
+        type: boolean
+        default: true
+      deploy_agent:
+        description: 'Deploy agent'
+        type: boolean
+        default: false
+      deploy_solid_queue:
+        description: 'Deploy solid queue'
+        type: boolean
+        default: true
+      maintenance_mode:
+        description: 'Maintenance mode'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: ap-northeast-1
+  ECS_CLUSTER: labid-app-cluster-dev
+  ECR_REPOSITORY_SERVER: labid-server-dev
+  ECR_REPOSITORY_CLIENT: labid-client-dev
+  ECR_REPOSITORY_AGENT: labid-agent-dev
+  ECR_REPOSITORY_ADMIN_CLIENT: labid-admin-client-dev
+  ECS_SERVICE_CLIENT: labid-client-service-dev
+  ECS_SERVICE_AGENT: labid-agent-service-dev
+  ECS_SERVICE_SERVER: labid-server-service-dev
+  ECS_SERVICE_ADMIN_CLIENT: labid-admin-client-service-dev
+  ECS_SERVICE_ADMIN_SERVER: labid-admin-server-service-dev
+  ECS_SERVICE_SOLID_QUEUE: labid-solid-queue-service-dev
+  CONTAINER_NAME_CLIENT: labid-client-dev
+  CONTAINER_NAME_AGENT: labid-agent-dev
+  CONTAINER_NAME_SERVER: labid-server-dev
+  CONTAINER_NAME_ADMIN_CLIENT: labid-admin-client-dev
+  CONTAINER_NAME_ADMIN_SERVER: labid-admin-server-dev
+  CONTAINER_NAME_SOLID_QUEUE: labid-solid-queue-dev
+  S3_BUCKET: labid-admin-client-dev
+
+jobs:
+  client-deploy:
+    name: Client Deploy
+    if: ${{ github.event.inputs.deploy_client == 'true' }}
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # sentry-cliで必要なパッケージをインストール
+      # ref: https://github.com/getsentry/sentry-cli/issues/1069
+      - name: Install ca-certificates
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ca-certificates
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR for client
+        id: build-image-client
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          API_BASE_URL: ${{ vars.API_BASE_URL_DEV }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
+          BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
+          NEXT_PUBLIC_CLIENT_BASE_URL: ${{ vars.FRONTEND_BASE_URL_DEV }}
+          NEXT_PUBLIC_CHAT_AGENT_API_BASE_URL: ${{ vars.CHAT_AGENT_API_BASE_URL_DEV }}
+          AUTH0_AUDIENCE: ${{ secrets.REDESIGN_AUTH0_AUDIENCE_DEV }}
+          AUTH0_CLIENT_ID: ${{ secrets.REDESIGN_AUTH0_CLIENT_ID_DEV }}
+          AUTH0_SECRET: ${{ secrets.REDESIGN_AUTH0_SECRET_DEV }}
+          AUTH0_DOMAIN: ${{ secrets.REDESIGN_AUTH0_DOMAIN_DEV }}
+          AUTH0_CLIENT_SECRET: ${{ secrets.REDESIGN_AUTH0_CLIENT_SECRET_DEV }}
+          AUTH0_SCOPE: ${{ secrets.REDESIGN_AUTH0_SCOPE_DEV }}
+          NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID: ${{ vars.GOOGLE_TAG_MANAGER_ID_DEV }}
+          IS_FAVORITE_USED_RECOMMEND_SEARCH_ENABLED: ${{ secrets.IS_FAVORITE_USED_RECOMMEND_SEARCH_ENABLED_DEV }}
+          NEXT_PUBLIC_MAINTENANCE_MODE: ${{ github.event.inputs.maintenance_mode }}
+          ADMIN_IPS: ${{ secrets.REDESIGN_ADMIN_IPS_DEV }}
+        working-directory: new_client
+        run: |
+          echo "NEXT_PUBLIC_API_BASE_URL=$API_BASE_URL" >> .env.production
+          echo "NEXT_PUBLIC_CHAT_AGENT_API_BASE_URL=$NEXT_PUBLIC_CHAT_AGENT_API_BASE_URL" >> .env.production
+          echo "SENTRY_AUTH_TOKEN=$SENTRY_AUTH_TOKEN" >> .env.production
+          echo "BASIC_AUTH_USER=$BASIC_AUTH_USER" >> .env.production
+          echo "BASIC_AUTH_PASS=$BASIC_AUTH_PASS" >> .env.production
+          echo "NEXT_PUBLIC_CLIENT_BASE_URL=$NEXT_PUBLIC_CLIENT_BASE_URL" >> .env.production
+          echo "NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID=$NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID" >> .env.production
+          echo "AUTH0_SECRET=$AUTH0_SECRET" >> .env.production
+          echo "APP_BASE_URL=$NEXT_PUBLIC_CLIENT_BASE_URL" >> .env.production
+          echo "AUTH0_DOMAIN=$AUTH0_DOMAIN" >> .env.production
+          echo "AUTH0_CLIENT_ID=$AUTH0_CLIENT_ID" >> .env.production
+          echo "AUTH0_AUDIENCE=$AUTH0_AUDIENCE" >> .env.production
+          echo "AUTH0_CLIENT_SECRET=$AUTH0_CLIENT_SECRET" >> .env.production
+          echo "AUTH0_SCOPE=$AUTH0_SCOPE" >> .env.production
+          echo "AUTH0_SESSION_AUTO_SAVE=false" >> .env.production
+          echo "IS_FAVORITE_USED_RECOMMEND_SEARCH_ENABLED=$IS_FAVORITE_USED_RECOMMEND_SEARCH_ENABLED" >> .env.production
+          echo "NEXT_PUBLIC_MAINTENANCE_MODE=$NEXT_PUBLIC_MAINTENANCE_MODE" >> .env.production
+          echo "ADMIN_IPS=$ADMIN_IPS" >> .env.production
+          docker build \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG \
+            -f Dockerfile \
+            .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY_CLIENT:$IMAGE_TAG"
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for client
+        id: task-def-client
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: new_client/ecs-task-definition/task-definition-redesign-uiux.json
+          container-name: ${{ env.CONTAINER_NAME_CLIENT }}
+          image: ${{ steps.build-image-client.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition for client
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-client.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_CLIENT }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+  agent-deploy:
+    name: Agent Deploy
+    if: ${{ github.event.inputs.deploy_agent == 'true' }}
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR for agent
+        id: build-image-agent
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          INTERNAL_API_ENDPOINT: ${{ vars.INTERNAL_API_ENDPOINT_DEV }}
+          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY_DEV }}
+          DATABASE_HOST: ${{ secrets.DB_HOST_DEV }}
+          DATABASE_USER: ${{ secrets.DB_USER_DEV }}
+          DATABASE_PASSWORD: ${{ secrets.DB_PASSWORD_DEV }}
+          DATABASE_NAME: ${{ vars.DB_NAME_DEV }}
+          DATABASE_PORT: ${{ vars.DB_PORT_DEV }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN_DEV }}
+          AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE_DEV }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL_DEV }}
+          LOG_LEVEL: ${{ vars.AGENT_LOG_LEVEL_DEV }}
+          CORS_ALLOW_ORIGINS: ${{ vars.CORS_ALLOW_ORIGINS_DEV }}
+          SERVER_PORT: ${{ vars.AGENT_SERVER_PORT_DEV }}
+        working-directory: agent/project_chat
+        run: |
+          docker build \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG \
+            -f Dockerfile \
+            .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_AGENT:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY_AGENT:$IMAGE_TAG"
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for agent
+        id: task-def-agent
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: agent/project_chat/ecs-task-definition/task-definition.json
+          container-name: ${{ env.CONTAINER_NAME_AGENT }}
+          image: ${{ steps.build-image-agent.outputs.image }}
+          environment-variables: |
+            DATABASE_HOST=${{ secrets.DB_HOST_DEV }}
+            DATABASE_USER=${{ secrets.DB_USER_DEV }}
+            DATABASE_PASSWORD=${{ secrets.DB_PASSWORD_DEV }}
+            DATABASE_NAME=${{ vars.DB_NAME_DEV }}
+            DATABASE_PORT=${{ vars.DB_PORT_DEV }}
+            INTERNAL_API_ENDPOINT=${{ vars.INTERNAL_API_ENDPOINT_DEV }}
+            INTERNAL_API_KEY=${{ secrets.INTERNAL_API_KEY_DEV }}
+            AUTH0_DOMAIN=${{ secrets.AUTH0_DOMAIN_DEV }}
+            AUTH0_AUDIENCE=${{ secrets.AUTH0_AUDIENCE_DEV }}
+            ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
+            ANTHROPIC_MODEL=${{ vars.ANTHROPIC_MODEL_DEV }}
+            LOG_LEVEL=${{ vars.AGENT_LOG_LEVEL_DEV }}
+            CORS_ALLOW_ORIGINS=${{ vars.CORS_ALLOW_ORIGINS_DEV }}
+            SERVER_PORT=${{ vars.AGENT_SERVER_PORT_DEV }}
+
+      - name: Deploy Amazon ECS task definition for agent
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-agent.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_AGENT }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+  server-deploy:
+    name: Server Deploy
+    if: ${{ github.event.inputs.deploy_server == 'true' }}
+    runs-on: ubuntu-latest
+    environment: development
+
+    strategy:
+      matrix:
+        service: [server, admin-server]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 3.3.1
+          working-directory: server
+
+      - name: Build, tag, and push image to Amazon ECR for ${{ matrix.service }}
+        id: build-image-server
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          RAILS_MASTER_KEY: ${{ secrets.SERVER_MASTER_KEY_DEV }}
+          DATABASE_HOST: ${{ secrets.DB_HOST_DEV }}
+          DATABASE_USERNAME: ${{ secrets.DB_USER_DEV }}
+          DATABASE_PASSWORD: ${{ secrets.DB_PASSWORD_DEV }}
+          PROJECT_BUCKET_NAME: ${{ secrets.PROJECT_DOCUMENT_BUCKET_NAME_DEV }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_ACCESS_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          PROPOSAL_QUEUE_URL: ${{ secrets.PROPOSAL_QUEUE_URL_DEV }}
+          ELASTICSEARCH_CLOUD_ID: ${{ secrets.ELASTICSEARCH_CLOUD_ID_DEV }}
+          ELASTICSEARCH_USER: ${{ secrets.ELASTICSEARCH_USER_DEV }}
+          ELASTICSEARCH_PASSWORD: ${{ secrets.ELASTICSEARCH_PASSWORD_DEV }}
+          RAILS_LOG_TO_STDOUT: true
+          CLIENT_ORIGIN: https://dev.labid.jp
+          ADMIN_CLIENT_ORIGIN: https://dev-admin.labid.jp
+          REDESIGN_CLIENT_ORIGIN: https://dev-redesign.labid.jp
+          SQS_ENDPOINT: 'https://sqs.ap-northeast-1.amazonaws.com'
+          ENABLE_LLM_DATE_EXTRACTION: true
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_DEV }}
+          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN_DEV }}
+          AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE_DEV }}
+          API_BASE_URL: ${{ vars.API_BASE_URL_DEV }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY_DEV }}
+          AUTH0_BACKEND_CLIENT_ID: ${{ secrets.AUTH0_BACKEND_CLIENT_ID_DEV }}
+          AUTH0_BACKEND_CLIENT_SECRET: ${{ secrets.AUTH0_BACKEND_CLIENT_SECRET_DEV }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY_DEV }}
+          AZURE_OPENAI_URL: ${{ secrets.AZURE_OPENAI_URL_DEV }}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION_DEV }}
+          AZURE_OPENAI_CHAT_API_VERSION: ${{ secrets.AZURE_OPENAI_CHAT_API_VERSION_DEV }}
+          SLACK_WEBHOOK_URL_PROPOSAL_NOTIFY: ${{ secrets.SLACK_WEBHOOK_URL_PROPOSAL_NOTIFY }}
+          FRONTEND_BASE_URL: ${{ vars.FRONTEND_BASE_URL_DEV }}
+          GOOGLE_CLIENT_ID: ${{ vars.GOOGLE_CLIENT_ID_DEV }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET_DEV }}
+          GOOGLE_CALENDAR_WEBHOOK_URL: ${{ vars.GOOGLE_CALENDAR_WEBHOOK_URL_DEV }}
+          MICROSOFT_CLIENT_ID: ${{ vars.MICROSOFT_CLIENT_ID_DEV }}
+          MICROSOFT_CLIENT_SECRET: ${{ secrets.MICROSOFT_CLIENT_SECRET_DEV }}
+          MICROSOFT_CALENDAR_WEBHOOK_URL: ${{ vars.MICROSOFT_CALENDAR_WEBHOOK_URL_DEV }}
+          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY_DEV }}
+          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY_DEV }}
+          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: ${{ secrets.ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT_DEV }}
+          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY_DEV }}
+        working-directory: server
+        run: |
+          echo "AWS_ACCESS_ID=$AWS_ACCESS_ID" >> .env
+          echo "AWS_ACCESS_KEY=$AWS_ACCESS_KEY" >> .env
+          echo "DATABASE_HOST=$DATABASE_HOST" >> .env
+          echo "DATABASE_USERNAME=$DATABASE_USERNAME" >> .env
+          echo "DATABASE_PASSWORD=$DATABASE_PASSWORD" >> .env
+          echo "OPENAI_API_KEY=$OPENAI_API_KEY" >> .env
+          echo "ENABLE_LLM_DATE_EXTRACTION=$ENABLE_LLM_DATE_EXTRACTION" >> .env
+          echo "AUTH0_DOMAIN=$AUTH0_DOMAIN" >> .env
+          echo "AUTH0_AUDIENCE=$AUTH0_AUDIENCE" >> .env
+          echo "API_BASE_URL=$API_BASE_URL" >> .env
+          echo "SQS_ENDPOINT=$SQS_ENDPOINT" >> .env
+          echo "PROPOSAL_QUEUE_URL=$PROPOSAL_QUEUE_URL" >> .env
+          echo "SENDGRID_API_KEY=$SENDGRID_API_KEY" >> .env
+          echo "AUTH0_BACKEND_CLIENT_ID=$AUTH0_BACKEND_CLIENT_ID" >> .env
+          echo "AUTH0_BACKEND_CLIENT_SECRET=$AUTH0_BACKEND_CLIENT_SECRET" >> .env
+          echo "AZURE_OPENAI_API_KEY=$AZURE_OPENAI_API_KEY" >> .env
+          echo "AZURE_OPENAI_URL=$AZURE_OPENAI_URL" >> .env
+          echo "AZURE_OPENAI_API_VERSION=$AZURE_OPENAI_API_VERSION" >> .env
+          echo "AZURE_OPENAI_CHAT_API_VERSION=$AZURE_OPENAI_CHAT_API_VERSION" >> .env
+          echo "SLACK_WEBHOOK_URL_PROPOSAL_NOTIFY=$SLACK_WEBHOOK_URL_PROPOSAL_NOTIFY" >> .env
+          echo "FRONTEND_BASE_URL=$FRONTEND_BASE_URL" >> .env
+          echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+          echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+          echo "GOOGLE_CALENDAR_WEBHOOK_URL=$GOOGLE_CALENDAR_WEBHOOK_URL" >> .env
+          echo "MICROSOFT_CLIENT_ID=$MICROSOFT_CLIENT_ID" >> .env
+          echo "MICROSOFT_CLIENT_SECRET=$MICROSOFT_CLIENT_SECRET" >> .env
+          echo "MICROSOFT_CALENDAR_WEBHOOK_URL=$MICROSOFT_CALENDAR_WEBHOOK_URL" >> .env
+          echo "ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY=$ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY" >> .env
+          echo "ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY=$ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY" >> .env
+          echo "ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT=$ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT" >> .env
+          echo "INTERNAL_API_KEY=$INTERNAL_API_KEY" >> .env
+          docker build \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY_SERVER:$IMAGE_TAG \
+            -f docker/Dockerfile \
+            --build-arg RAILS_ENV=production \
+            --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY \
+            --build-arg ELASTICSEARCH_CLOUD_ID=$ELASTICSEARCH_CLOUD_ID \
+            --build-arg ELASTICSEARCH_USER=$ELASTICSEARCH_USER \
+            --build-arg ELASTICSEARCH_PASSWORD=$ELASTICSEARCH_PASSWORD \
+            --build-arg PROJECT_BUCKET_NAME=$PROJECT_BUCKET_NAME \
+            --build-arg PROPOSAL_QUEUE_URL=$PROPOSAL_QUEUE_URL \
+            --build-arg SQS_ENDPOINT=$SQS_ENDPOINT \
+            --build-arg PROJECT_BUCKET_REGION=$AWS_REGION \
+            --build-arg RAILS_LOG_TO_STDOUT=$RAILS_LOG_TO_STDOUT \
+            --build-arg CLIENT_ORIGIN=$CLIENT_ORIGIN \
+            --build-arg ADMIN_CLIENT_ORIGIN=$ADMIN_CLIENT_ORIGIN \
+            --build-arg REDESIGN_CLIENT_ORIGIN=$REDESIGN_CLIENT_ORIGIN \
+            .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_SERVER:$IMAGE_TAG
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY_SERVER:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY_SERVER:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_SERVER:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY_SERVER:$IMAGE_TAG"
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for server
+        id: task-def-server
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: server/ecs-task-definition/task-definition-${{ matrix.service }}.json
+          container-name: labid-${{ matrix.service }}-dev
+          image: ${{ steps.build-image-server.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition for ${{ matrix.service }}
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-server.outputs.task-definition }}
+          service: labid-${{ matrix.service }}-service-dev
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+      - name: get parameters for migration
+        run: |
+          echo "LATEST_TASK_DEFINITION=`aws ecs list-task-definitions --family-prefix labid-${{ matrix.service }}-dev --output text | grep labid-${{ matrix.service }}-dev | tail -n1 | awk -F '/' '{print $NF}'`" >> $GITHUB_ENV
+          echo "SECURITY_GROUP_NAME=`aws ssm get-parameter --name '/labid/dev/sg/labid-ecs-server' --output text --query 'Parameter.Value' `" >> $GITHUB_ENV
+          echo "SUBNET_1a=`aws ssm get-parameter --name '/labid/dev/vpc/subnet_public_1a' --output text --query 'Parameter.Value' `" >> $GITHUB_ENV
+          echo "SUBNET_1c=`aws ssm get-parameter --name '/labid/dev/vpc/subnet_public_1c' --output text --query 'Parameter.Value' `" >> $GITHUB_ENV
+
+      - name: Run Migrations
+        uses: noelzubin/aws-ecs-run-task@v1.0
+        with:
+          cluster: ${{ env.ECS_CLUSTER }}
+          task-definition: ${{ env.LATEST_TASK_DEFINITION }}
+          subnets: |
+            ${{ env.SUBNET_1a }}
+            ${{ env.SUBNET_1c }}
+          security-groups: ${{ env.SECURITY_GROUP_NAME }}
+          assign-public-ip: ENABLED
+          override-container: labid-${{ matrix.service }}-dev
+          override-container-command: |
+            sh
+            -c
+            bundle exec rails db:create && bundle exec rails ridgepole:apply
+
+      # workaround
+      - name: Force restart ECS Service with latest Task Definition
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service labid-${{ matrix.service }}-service-dev \
+            --force-new-deployment
+
+  admin-client-deploy:
+    name: Admin Client Deploy
+    if: ${{ github.event.inputs.deploy_admin_client == 'true' }}
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: admin
+        run: yarn install --frozen-lockfile
+
+      - name: Build admin client
+        working-directory: admin
+        env:
+          VITE_API_URL: ${{ secrets.ADMIN_API_URL_DEV }}
+          VITE_ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY_DEV }}
+          VITE_AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN_DEV }}
+          VITE_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID_DEV }}
+          VITE_AUTH0_AUDIENCE: ${{ secrets.AUTH0_AUDIENCE_DEV }}
+        run: |
+          yarn build
+
+      - name: Deploy to S3
+        working-directory: admin
+        run: |
+          aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ --delete
+          aws s3 cp s3://${{ env.S3_BUCKET }}/index.html s3://${{ env.S3_BUCKET }}/index.html \
+            --metadata-directive REPLACE \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --content-type "text/html"
+
+  solid-queue-deploy:
+    name: Solid Queue Deploy
+    if: ${{ github.event.inputs.deploy_solid_queue == 'true' }}
+    runs-on: ubuntu-latest
+    environment: development
+    needs: server-deploy
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Get latest server image
+        id: get-image
+        run: |
+          IMAGE_TAG=${{ github.sha }}
+          ECR_REGISTRY=${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY=${{ env.ECR_REPOSITORY_SERVER }}
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for solid queue
+        id: task-def-solid-queue
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: server/ecs-task-definition/task-definition-solid-queue.json
+          container-name: ${{ env.CONTAINER_NAME_SOLID_QUEUE }}
+          image: ${{ steps.get-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition for solid queue
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-solid-queue.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_SOLID_QUEUE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true

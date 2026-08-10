@@ -1,0 +1,47 @@
+いつもLabidをご利用いただき、ありがとうございます！
+絞り込み条件にマッチした新着案件は【合計<%= @new_projects.values.sum(&:count) %>件】でした！
+
+【<%= Time.zone.today.strftime("%Y/%m/%d") %> 絞り込み条件にマッチした新着案件】
+<% @new_projects.each.with_index(1) do |(preset, projects), index| %>
+--------------------------------------------------
+設定した絞り込み条件<%= index %>
+<%= preset.as_text %>
+--------------------------------------------------
+<% if projects.count > 0 %>
+<入札案件>
+<% end %>
+<% ProjectDecorator.decorate_collection(projects).each.with_index(1) do |project, index| %>
+☆<%= index %>件目☆ 
+【<%= project.title %>】
+<%= project.url %>
+発注機関: <%= project.organization_name %>
+公告日: <%= project.publication_date %>
+入札締切日: <%= project.bidding_deadline_date %>
+
+
+<% end %>
+<% if @new_recommendations[preset].present? %>
+
+<イチオシ案件>
+新着のイチオシ案件があります！
+<% ProjectDecorator.decorate_collection(@new_recommendations[preset]).each.with_index(1) do |project, index| %>
+☆<%= index %>件目☆
+【<%= project.title %>】
+<%= project.url %>
+発注機関: <%= project.organization_name %>
+公告日: <%= project.publication_date %>
+入札締切日: <%= project.bidding_deadline_date %>
+
+
+<% end %>
+<% end %>
+この絞り込み条件の新着入札案件は【<%= projects.count %>件】でした
+
+<% if projects.count > 0 %>
+この絞り込み条件の受付中案件はこちら
+<%= "#{ENV.fetch('CLIENT_ORIGIN')}/projects?#{preset.as_query.gsub(/publicationDateFrom=[^&]*&?|publicationDateTo=[^&]*&?/, '')}&publicationDateFrom=#{1.day.ago.strftime('%Y-%m-%d')}&publicationDateTo=#{Time.zone.today.strftime('%Y-%m-%d')}" %>
+
+
+
+<% end %>
+<% end %>

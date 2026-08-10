@@ -1,0 +1,45 @@
+.container {
+  --dot-min-size: 8px;
+  --dot-max-size: 12px;
+  --dot-gap: 8px;
+  --dot-delay-step: 0.18s;
+  --dot-scale-factor: 1.5;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dot-gap);
+}
+
+.dot {
+  width: var(--dot-min-size);
+  height: var(--dot-min-size);
+  border-radius: 50%;
+  background: currentColor;
+  animation: dotBounce 1.4s infinite ease-in-out both;
+  transform-origin: center;
+}
+
+.dot:nth-child(1) {
+  animation-delay: calc(var(--dot-delay-step) * -2);
+}
+
+.dot:nth-child(2) {
+  animation-delay: calc(var(--dot-delay-step) * -1);
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes dotBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: scale(var(--dot-scale-factor));
+  }
+}

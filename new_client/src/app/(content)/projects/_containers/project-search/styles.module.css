@@ -1,0 +1,20 @@
+.projectSearchContainer {
+  padding-block: 24px;
+  padding-inline: 40px;
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.projectSearchBox {
+  gap: 16px;
+}
+
+.projectSearchSort {
+  margin-block: auto;
+}
+
+.projectSearchWarningBox {
+  padding-top: 16px;
+}

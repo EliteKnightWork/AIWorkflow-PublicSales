@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  db:
+    platform: linux/amd64
+  elasticsearch:
+    environment:
+      - 'ES_JAVA_OPTS='
+      - 'CLI_JAVA_OPTS='
+    user: elasticsearch

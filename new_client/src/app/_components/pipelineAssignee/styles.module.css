@@ -1,0 +1,19 @@
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--text-color-tertiary);
+  height: 14px;
+}
+
+.selectedTab {
+  padding-inline: 16px;
+  padding-block: 8px;
+  text-align: left;
+}
+
+.selectedAssignedUserTab {
+  color: var(--text-color-purple);
+  background-color: var(--bg-color-red);
+}

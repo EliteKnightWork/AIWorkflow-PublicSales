@@ -1,0 +1,99 @@
+name: Server
+
+on:
+  pull_request:
+    paths:
+      - 'server/**'
+      - '.github/workflows/server_ci.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  RSpec:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: password
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 3.3.1
+          working-directory: server
+
+      - name: Setup Elasticsearch
+        uses: elastic/elastic-github-actions/elasticsearch@master
+        with:
+          stack-version: 8.14.0
+          security-enabled: false
+          plugins: analysis-kuromoji analysis-icu
+
+      - name: Copy synonyms.txt into Elasticsearch container
+        run: |
+          CONTAINER_ID=$(docker ps -q --filter ancestor=docker.elastic.co/elasticsearch/elasticsearch:8.14.0)
+          docker cp ./server/esconfig/synonyms.txt "$CONTAINER_ID:/usr/share/elasticsearch/config/synonyms.txt"
+
+      - name: Database create and migrate
+        env:
+          RAILS_ENV: test
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: ${{ job.services.mysql.ports['3306'] }}
+          CLIENT_ORIGIN: localhost:8080
+          ADMIN_CLIENT_ORIGIN: localhost:3000
+          REDESIGN_CLIENT_ORIGIN: localhost:8000
+          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: test_primary_key_for_ci_only
+          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: test_deterministic_key_for_ci_only
+          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: test_key_derivation_salt_for_ci_only
+        run: |
+          cd server
+          bundle exec rails db:create
+          bundle exec rails ridgepole:apply:test
+
+      - name: Run RSpec
+        env:
+          RAILS_ENV: test
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: ${{ job.services.mysql.ports['3306'] }}
+          ELASTICSEARCH_HOST: localhost
+          CLIENT_ORIGIN: localhost:8080
+          ADMIN_CLIENT_ORIGIN: localhost:3000
+          REDESIGN_CLIENT_ORIGIN: localhost:8000
+          FRONTEND_BASE_URL: http://localhost:8080
+          ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: test_primary_key_for_ci_only
+          ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: test_deterministic_key_for_ci_only
+          ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: test_key_derivation_salt_for_ci_only
+        run: |
+          cd server
+          bundle exec rspec
+
+  Rubocop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 3.3.1
+          working-directory: server
+
+      - name: Run Rubocop
+        run: |
+          cd server
+          bundle exec rubocop

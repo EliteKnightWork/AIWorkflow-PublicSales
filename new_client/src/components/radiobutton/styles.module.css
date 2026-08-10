@@ -1,0 +1,23 @@
+/* AppRadio専用ラジオボタン用CSS */
+.radioLabel {
+  display: flex;
+  align-items: center;
+  background: var(--color-white);
+  border-radius: 8px;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  min-width: 180px;
+  opacity: 1;
+  transition: border-color 0.2s;
+}
+.radioInput {
+  accent-color: var(--app-orange-main);
+  width: var(--control-size, 20px);
+  height: var(--control-size, 20px);
+  margin-right: 8px;
+}
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

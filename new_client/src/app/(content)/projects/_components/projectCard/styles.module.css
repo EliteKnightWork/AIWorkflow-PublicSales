@@ -1,0 +1,132 @@
+.projectCard {
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 0 4px 0 var(--shadow-color-light);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  background-color: var(--bg-color-quaternary);
+
+  @media screen and (max-width: 540px) {
+    padding: 16px;
+  }
+}
+
+.projectBrowsedCard {
+  background-color: var(--bg-color-viewed);
+}
+
+.projectCard.noShadow {
+  box-shadow: none;
+  border: 1px solid var(--border-color-tertiary);
+  border-radius: 0px;
+}
+
+.projectCard.noPadding:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.projectCard.noPadding:last-child {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.projectCard:hover {
+  opacity: 0.6;
+}
+
+.projectCardIcon {
+  font-size: 32px !important;
+}
+
+.newArrivalBadge {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--color-black);
+}
+
+.pipelineStatusBadge {
+  background: none;
+  color: var(--text-color-primary);
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid var(--color-black);
+}
+
+.buttonArea {
+  min-width: 256px;
+  flex-shrink: 0;
+  @media screen and (max-width: 540px) {
+    min-width: 48px;
+  }
+}
+
+.openButton {
+  padding: 16px;
+  height: 56px;
+  width: 56px;
+  color: var(--text-color-tertiary);
+}
+
+.pipelineButton {
+  padding: 16px;
+  height: 56px;
+  background: none;
+  font-weight: 700;
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.pipelineButton:hover {
+  background-color: var(--bg-color-hover);
+}
+
+.pipelineButton.small {
+  padding: 12px;
+  height: 40px;
+  width: 40px;
+}
+
+.openInNewIcon {
+  font-size: 16px !important;
+}
+
+.projectInfo {
+  flex-wrap: wrap;
+}
+
+.deadlineText {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.deadlineDateText {
+  color: var(--app-orange-main);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.registrationText {
+  color: var(--text-color-secondary);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.titleContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.projectTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

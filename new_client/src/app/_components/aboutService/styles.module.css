@@ -1,0 +1,89 @@
+.aboutService {
+  display: flex;
+  flex-direction: row;
+  padding: 60px 130px;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background-color: rgba(241, 246, 250, 0.3);
+
+  @media screen and (max-width: 540px) {
+    padding: 64px 20px;
+    flex-direction: column;
+  }
+}
+
+.aboutServiceContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: auto;
+  width: 550px;
+  gap: 24px;
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.header {
+  display: flex;
+  direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-inline: auto;
+  color: var(--app-orange-tertiary);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 30px;
+  color: var(--text-color-dark-gray);
+  font-weight: 700;
+
+  @media screen and (max-width: 540px) {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.title strong {
+  font-size: 32px;
+  color: var(--app-orange-tertiary);
+  font-weight: 700;
+
+  @media screen and (max-width: 540px) {
+    font-size: 22px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  color: var(--text-color-dark-gray);
+  font-weight: 400;
+
+  @media screen and (max-width: 540px) {
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+.image {
+  width: 351px;
+  aspect-ratio: 97 / 100;
+  position: relative;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 540px) {
+    width: 70%;
+  }
+}

@@ -1,0 +1,63 @@
+.suggestionsList {
+  flex: 1;
+  border-bottom: 1px solid var(--bg-color-modal);
+}
+
+.title {
+  font-weight: bold;
+}
+
+.loadingBox {
+  padding: 8px;
+}
+
+.titleBox {
+  padding-inline: 32px;
+  padding-block: 16px;
+  display: Flex;
+  direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestionRow {
+  cursor: pointer;
+  padding-inline: 32px;
+  padding-block: 8px;
+  gap: 8px;
+}
+
+.suggestionRow:hover {
+  background-color: var(--bg-color-tertiary);
+}
+
+.suggestionTextRow {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  direction: row;
+  gap: 8px;
+}
+
+.suggestionTextChip {
+  background-color: var(--bg-color-modal);
+  width: fit-content;
+  padding-inline: 16px;
+  padding-block: 2px;
+  border-radius: 4px;
+}
+
+.suggestionText {
+  font-size: 14px;
+}
+
+.noSuggestionsTextBox {
+  padding-inline: 32px;
+  padding-block: 16px;
+}
+
+.selectedSuggestionRow {
+  background-color: var(--bg-color-tertiary);
+  border: 1px solid #0275ff;
+  border-radius: 8px;
+}

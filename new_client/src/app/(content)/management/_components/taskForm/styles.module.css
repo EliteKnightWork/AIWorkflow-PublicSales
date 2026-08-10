@@ -1,0 +1,292 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 64px;
+}
+
+.formTitle {
+  color: var(--text-color-tertiary);
+  font-weight: bold;
+}
+
+.selectedTab {
+  padding-inline: 16px;
+  padding-block: 8px;
+  text-align: left;
+}
+
+.taskErrorArea {
+  padding: 16px;
+  background-color: var(--bg-color-red);
+  color: var(--text-color-error);
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.taskWarningArea {
+  padding: 16px;
+  background-color: var(--bg-color-warning);
+  color: var(--text-color-warning);
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.selectedPipelineTab {
+  color: var(--text-color-green);
+  background-color: var(--bg-color-green);
+}
+
+.selectedAssignedUserTab {
+  color: var(--text-color-purple);
+  background-color: var(--bg-color-red);
+}
+
+.selectedStatusTab {
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.taskDatePicker {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+}
+
+.taskTitleArea {
+  padding: 32px;
+}
+
+.taskDatePicker {
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-primary);
+}
+
+.taskTitleInput {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--border-color-input);
+  font-size: 24px;
+  width: 100%;
+  outline: none;
+}
+
+.saveButton {
+  /* z-index: 1000; */
+  background-color: var(--app-orange-main);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 64px;
+  padding-inline: 32px;
+  padding-block: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 256px;
+  color: var(--color-white);
+  z-index: 10000;
+}
+
+.saveButtonChatSideBarOpen {
+  /* 保存ボタンを右から25vwの位置に固定表示 */
+  position: fixed;
+  bottom: 20px;
+  right: 55vw;
+  transform: translateX(50%);
+}
+
+.saveButtonChatSideBarClosed {
+  /* 保存ボタンを右から25vwの位置に固定表示 */
+  position: fixed;
+  bottom: 20px;
+  right: 25vw;
+  transform: translateX(50%);
+}
+
+.saveButton:hover {
+  opacity: 0.6;
+}
+
+/* modal */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-inline: auto;
+
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8000;
+  padding-inline: 24px;
+  padding-block: 16px;
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  padding: 16px !important;
+  font-weight: bold;
+  display: flex;
+}
+
+.headerTitle {
+  margin-inline: auto;
+  font-size: 16px;
+  margin-block: auto;
+}
+
+.contentStrong {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.description span {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.trailButton {
+  background: var(--gradient-orange);
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: 64px;
+  font-size: 24px;
+  padding-inline: 36px;
+  padding-block: 16px;
+  width: 340px;
+}
+
+.buttonBox {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.modalContent {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContentBox {
+  padding-block: 32px;
+}
+
+.openModalBtn {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.fileList {
+  background-color: var(--bg-color-quaternary);
+  border-radius: 8px;
+}
+
+.fileItem {
+  padding: 16px;
+}
+
+.fileItem:not(:last-child) {
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.downloadIcon {
+  width: 24px;
+  font-size: 24px;
+  color: var(--app-blue-main);
+}
+
+.fileTitle {
+  color: var(--app-blue-main);
+  width: 100%;
+}
+
+.taskDescriptionTextArea {
+  box-shadow: none;
+  min-height: 180px;
+}
+
+.attachmentLinkIcon {
+  cursor: pointer;
+}
+
+.attachmentLinkIcon:hover {
+  opacity: 0.6;
+}
+
+.attachmentLinkIcon:hover {
+  opacity: 0.6;
+}
+
+.registerButton {
+  width: 120px;
+  height: 40px;
+  border: 1px solid var(--border-color-separater);
+  border-radius: 64px;
+  border-width: 1px;
+  padding: 12px 16px;
+  gap: 4px;
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-tertiary);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.registerButton:hover {
+  opacity: 0.6;
+}
+
+.registerButton:disabled {
+  border: 1px solid var(--border-color-separater);
+  background-color: var(--bg-color-disabled);
+  color: var(--text-color-disabled);
+  opacity: 1;
+}
+
+.registerButton:disabled:hover {
+  opacity: 1;
+}
+
+.accountSettingButton {
+  background-color: transparent;
+  color: var(--app-blue-main);
+}
+
+.accountSettingButton:hover {
+  background-color: transparent;
+  color: var(--app-blue-main);
+}
+
+.accountSettingLink {
+  color: var(--app-blue-main);
+}
+
+.accountSettingLink:hover {
+  opacity: 0.8;
+}

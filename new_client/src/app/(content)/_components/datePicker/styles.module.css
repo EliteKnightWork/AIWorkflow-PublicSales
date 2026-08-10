@@ -1,0 +1,22 @@
+.input {
+  width: 100%;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-primary);
+  height: 100%;
+}
+
+/* react-datepickerのデフォルトスタイルを上書き */
+.datepickerWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.datepickerWrapper :global(.react-datepicker-wrapper),
+.datepickerWrapper :global(.react-datepicker__input-container) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

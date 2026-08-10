@@ -1,0 +1,37 @@
+.body {
+  background-color: var(--bg-color-primary);
+  padding: 24px;
+  gap: 24px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.messageBox {
+  padding: 16px;
+}
+
+.messageButton {
+  font-weight: 600;
+  color: var(--text-color-tertiary);
+  background-color: var(--app-orange-main);
+  box-shadow: none;
+  padding: 16px;
+  margin-inline: auto;
+}
+
+.messageButtonBox {
+  min-width: 128px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.messageText {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.messageText > div {
+  margin-inline: auto;
+  margin-block: 8px;
+}

@@ -1,0 +1,160 @@
+.myInfoArea {
+  padding: 20px;
+  margin-top: 24px;
+  margin-inline: 24px;
+}
+
+.InfoFormTitle {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.InfoFormEmail {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.infoInput {
+  height: 48px;
+}
+
+.accountSettingSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.providerContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.providerBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 197px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-gray);
+  color: var(--text-color-primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tooltip {
+  gap: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-primary);
+  background-color: var(--color-white);
+}
+
+.tooltipIcon {
+  color: var(--border-color-checkbox);
+}
+
+/* Google Sign-In Button Styles - Following Google Branding Guidelines */
+.googleSignInButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 40px;
+  min-width: 184px;
+  background-color: var(--color-white);
+  border: 1px solid var(--button-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--button-text);
+  line-height: 20px;
+}
+
+.googleSignInButton:hover {
+  background-color: var(--button-hover-bg);
+  box-shadow:
+    0 1px 2px 0 var(--button-shadow-light),
+    0 1px 3px 1px var(--button-shadow-medium);
+}
+
+.googleSignInButton:active {
+  background-color: var(--button-active-bg);
+  box-shadow:
+    0 1px 2px 0 var(--button-shadow-light),
+    0 2px 6px 2px var(--button-shadow-medium);
+}
+
+/* Microsoft Sign-In Button Styles - Following Microsoft Branding Guidelines */
+.microsoftSignInButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 41px;
+  min-width: 200px;
+  background-color: var(--color-white);
+  border: 1px solid var(--button-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--button-text);
+  line-height: 20px;
+}
+
+.microsoftSignInButton:hover {
+  background-color: var(--button-hover-bg);
+  box-shadow:
+    0 1px 2px 0 var(--button-shadow-light),
+    0 1px 3px 1px var(--button-shadow-medium);
+}
+
+.microsoftSignInButton:active {
+  background-color: var(--button-active-bg);
+  box-shadow:
+    0 1px 2px 0 var(--button-shadow-light),
+    0 2px 6px 2px var(--button-shadow-medium);
+}
+
+/* Shared logo styles */
+.providerLogoGoogle {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.providerLogoMicrosoft {
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Button text styles */
+.buttonText {
+  white-space: nowrap;
+  text-align: left;
+}

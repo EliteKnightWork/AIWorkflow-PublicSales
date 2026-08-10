@@ -1,0 +1,233 @@
+/* モーダル */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-inline: auto;
+  width: 60%;
+  min-width: 500px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8000;
+  padding-inline: 24px;
+  padding-block: 40px;
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  padding: 16px !important;
+  font-weight: bold;
+  display: flex;
+}
+
+.headerTitle {
+  margin-inline: auto;
+  font-size: 16px;
+  margin-block: auto;
+}
+
+.headerClokseBtn {
+  margin-left: auto;
+  padding: 12px;
+}
+
+.headerClokseBtn span {
+  font-size: 32px !important;
+}
+
+.contentStrong {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.description span {
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.trailButton {
+  background: var(--gradient-orange);
+  color: var(--color-white);
+  font-weight: 700;
+  border-radius: 64px;
+  font-size: 24px;
+  padding-inline: 36px;
+  padding-block: 16px;
+  width: 340px;
+}
+
+.buttonBox {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.modalContent {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalContentBox {
+  padding-block: 32px;
+}
+
+.openModalBtn {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* サイドメニュー */
+.sideMenu {
+  height: 100%;
+  /* bottomButtonAreaの位置に影響 */
+  width: 240px;
+  padding: 24px;
+  border-right: 1px solid var(--border-color-separater);
+}
+
+.sideMenuTitle {
+  font-size: 18px;
+  color: var(--app-orange-main);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.sideMenuTitleIcon {
+  font-size: 24px;
+  color: var(--app-orange-main);
+  margin-right: 2px;
+}
+
+.sideMenuFooter {
+  margin-top: auto;
+  text-align: center;
+}
+
+.sideMenuFooterButton {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--bg-color-tag-text);
+}
+
+.sideMenuFooterButton:hover {
+  opacity: 0.6;
+}
+
+.buttonRow {
+  gap: 24px;
+  padding-top: 40px;
+}
+
+.buttonRow button {
+  width: 240px;
+}
+
+.buttonRow button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.buttonRow button:disabled {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}
+
+.createButton[class] {
+  width: 240px;
+  color: var(--bg-color-quaternary);
+  background-color: var(--bg-color-tag-text);
+}
+
+.editButton[class] {
+  width: 240px;
+  color: var(--bg-color-quaternary);
+  background-color: var(--app-orange-main);
+}
+
+.conditionInfo {
+  gap: 16px;
+}
+
+.removeConditions {
+  background-color: var(--bg-color-error);
+  padding: 16px;
+  gap: 16px;
+}
+
+.removeConditions .errorIcon {
+  color: var(--app-strong);
+  margin-block: auto;
+}
+
+.removeConditions .title {
+  color: var(--app-strong);
+}
+
+.addConditions {
+  background-color: var(--bg-color-add);
+  padding: 16px;
+  gap: 16px;
+}
+
+.addConditions .errorIcon {
+  color: var(--app-blue-main);
+  margin-block: auto;
+}
+
+.addConditions .title {
+  color: var(--app-blue-main);
+}
+
+.conditionChip {
+  padding: 4px;
+  color: var(--text-color-tertiary);
+  background-color: var(--background);
+  border-radius: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conditionChipList {
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.input {
+  color: var(--text-color-primary);
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color-separater);
+  background-color: var(--bg-color-quaternary);
+}
+
+.presetInfoBox {
+  padding: 24px;
+  border-radius: var(--md, 16px);
+  border: 1px solid var(--border-color-separater);
+  background: var(--bg-color-quaternary);
+}

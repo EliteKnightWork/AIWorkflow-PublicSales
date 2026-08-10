@@ -1,0 +1,116 @@
+.searchContainer {
+  padding-block: 80px;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding-inline: auto;
+  color: var(--app-orange-tertiary);
+  font-weight: bold;
+}
+
+.problemTitle {
+  margin-top: 24px;
+  font-size: 32px;
+  color: var(--app-black-secondary);
+  font-weight: bold;
+}
+
+.problemContentBox {
+  background-color: var(--color-white);
+  padding-inline: 24px;
+  padding-block: 48px;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.problemContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.problemContent img {
+  padding: 16px;
+}
+
+.problemContentText {
+  color: var(--text-color-dark-slate);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.problemContentStrong {
+  color: var(--app-orange-tertiary);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.contentFlex {
+  width: 80vw;
+  margin-inline: auto;
+}
+
+.searchItemCard {
+  width: 100%;
+  box-shadow:
+    0 4px 6px -1px var(--shadow-color-light),
+    0 2px 4px -1px var(--shadow-color-light);
+  border-radius: 16px;
+}
+
+.searchItemHeader {
+  width: 100%;
+  background: var(--gradient-orange);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 8px;
+  color: var(--color-white);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  padding-block: 8px;
+  padding-left: 24px;
+}
+
+.searchItemContent {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding: 8px;
+  margin-top: 8px;
+  margin-inline: 16px;
+  margin-bottom: 16px;
+}
+
+.chipBox {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-blue);
+  border-radius: 16px;
+  padding-inline: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.chipList {
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.areaTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--app-black-secondary);
+}

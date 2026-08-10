@@ -1,0 +1,9 @@
+{
+  "browser": {
+    "isolated": true,
+    "launchOptions": {
+      "headless": true
+    }
+  },
+  "outputDir": "./playwright_e2e/output"
+}

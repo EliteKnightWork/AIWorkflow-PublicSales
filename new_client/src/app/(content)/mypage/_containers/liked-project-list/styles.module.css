@@ -1,0 +1,93 @@
+.favoriteProjectCardTopElementBox {
+  width: 100%;
+  font-weight: bold;
+  background-color: var(--app-orange-light);
+  border-radius: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border: 1px solid var(--app-orange-main);
+}
+
+.projectPipelineButton {
+  font-weight: bold;
+  background: none;
+  border-radius: 4px !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+
+.favoriteProjectCardTopElementText {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--app-orange-main);
+}
+
+.favoriteProjectCardTopElementIcon {
+  color: var(--app-orange-main);
+  font-size: 24px !important;
+}
+
+.noItemFlex {
+  font-size: 20px;
+  text-align: center;
+}
+
+.noItemFlex button {
+  color: var(--bg-color-quaternary);
+  background-color: var(--app-orange-main);
+  border-radius: 40px;
+  display: flex;
+  height: 56px;
+  min-width: 288px;
+  max-width: 320px;
+  min-height: 56px;
+  padding: 12px 16px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.noItemFlex button:hover {
+  opacity: 0.6;
+}
+
+.messageBox {
+  padding: 40px;
+}
+
+.downloadButton {
+  border-radius: 64px;
+  color: var(--text-color-tertiary);
+  background: var(--bg-color-quaternary);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-block: 12px;
+  padding-inline: 16px;
+  cursor: pointer;
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-a2);
+}
+
+.downloadButton:disabled {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}

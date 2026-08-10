@@ -1,0 +1,10 @@
+いつもLabidをご利用いただき、ありがとうございます！
+叩き台の作成が完了しましたので、お知らせします。
+
+入札案件名: <%= @proposal_job.project.title %>
+
+提案書のダウンロードは以下のリンクからお願いします：
+
+<%= Rails.application.routes.url_helpers.rails_blob_url(@proposal_job.proposal_document.file, expires_in: 1.week) %>
+
+今後ともLabidをよろしくお願いいたします。 

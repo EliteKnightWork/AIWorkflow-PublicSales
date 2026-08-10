@@ -1,0 +1,14 @@
+.ProjectSideBar {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  /* width: 50vw; */
+  overflow-y: scroll;
+  z-index: 100;
+}
+
+.modal {
+  background-color: var(--bg-color-primary);
+  box-shadow: -2px 0px 4px 0px var(--border-color-gray);
+}

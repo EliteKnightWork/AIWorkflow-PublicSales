@@ -1,0 +1,1 @@
+export { CreateCustomObjectModalContent } from './CreateCustomObjectModalContent';

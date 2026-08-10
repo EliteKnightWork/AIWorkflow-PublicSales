@@ -1,0 +1,7 @@
+.stateBadge {
+  padding: 4px;
+}
+
+.inactiveStateBadge {
+  opacity: 0.5;
+}

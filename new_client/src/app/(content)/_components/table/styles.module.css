@@ -1,0 +1,44 @@
+.tableContainer {
+  width: 100%;
+}
+
+.tableRoot {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  background-color: var(--app-orange-main);
+  color: var(--bg-color-quaternary);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tableBody {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.tableHeaderCell {
+  color: var(--bg-color-quaternary);
+  font-weight: bold;
+  padding: 16px;
+  border: 1px solid #f1f6fa;
+}
+
+.tableRow:nth-child(odd) {
+  background-color: var(--bg-color-quaternary);
+}
+
+.tableRow:nth-child(even) {
+  background-color: var(--bg-color-quaternary);
+}
+
+.tableCell {
+  padding-inline: 16px;
+  padding-block: 8px;
+  vertical-align: middle;
+  border: 1px solid #f1f6fa;
+  box-shadow: none;
+}

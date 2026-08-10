@@ -1,0 +1,6 @@
+docker-compose.override.yml
+
+/tmp
+.mcp.json
+.idea
+.DS_Store

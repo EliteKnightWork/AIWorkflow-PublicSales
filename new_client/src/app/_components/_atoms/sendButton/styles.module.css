@@ -1,0 +1,24 @@
+.sendButton {
+  background: var(--gradient-blue);
+  color: white;
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 8px;
+}
+
+/* 無効状態のスタイル */
+.sendButton:disabled {
+  opacity: 0.1;
+  cursor: not-allowed;
+}
+
+/* 有効状態でのみホバー効果を適用 */
+.sendButton:not(:disabled):hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.sendButton:not(:disabled):active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) inset;
+}

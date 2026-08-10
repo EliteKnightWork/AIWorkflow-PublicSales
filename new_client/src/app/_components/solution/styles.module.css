@@ -1,0 +1,125 @@
+.solutionContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  padding: 80px 0px;
+  width: 100%;
+  align-items: center;
+  gap: 24px;
+
+  @media screen and (max-width: 540px) {
+    padding: 60px 16px 40px 16px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding-inline: auto;
+  color: var(--app-orange-tertiary);
+  font-weight: bold;
+  margin-inline: auto;
+  font-size: 14px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 32px;
+  color: var(--app-black-secondary);
+  text-align: center;
+  @media screen and (max-width: 540px) {
+    font-size: 24px;
+  }
+}
+
+.solutionContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 1005px;
+  gap: 130px;
+  align-items: center;
+  @media screen and (max-width: 540px) {
+    width: 100%;
+    gap: 60px;
+  }
+}
+
+.solutionPointContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+  @media screen and (max-width: 540px) {
+    gap: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.solutionPointContainerReverse {
+  display: flex;
+  flex-direction: row;
+  gap: 90px;
+  @media screen and (max-width: 540px) {
+    gap: 0px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+.solutionPoint {
+  display: flex;
+  flex-direction: column;
+  margin-block: auto;
+  gap: 24px;
+  @media screen and (max-width: 540px) {
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.solutionPointTitle {
+  color: var(--app-black-secondary);
+  font-size: 24px;
+  font-weight: bold;
+  @media screen and (max-width: 540px) {
+    font-size: 20px;
+  }
+}
+
+.solutionPointTitle strong {
+  color: var(--app-orange-tertiary);
+  font-size: 24px;
+  font-weight: bold;
+  @media screen and (max-width: 540px) {
+    font-size: 20px;
+  }
+}
+
+.solutionPointDescription {
+  color: var(--app-black-secondary);
+  font-size: 16px;
+
+  @media screen and (max-width: 540px) {
+    padding-top: 8px;
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+.solutionPoint img {
+  width: 83px;
+}
+
+.solutionImage {
+  width: 500px;
+  position: relative;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 540px) {
+    margin: 20px 0px;
+    width: 90%;
+  }
+}

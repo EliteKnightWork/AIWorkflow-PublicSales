@@ -1,0 +1,18 @@
+.dateChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  padding-inline: 16px;
+  padding-block: 8px;
+  width: fit-content;
+}
+
+.icon {
+  color: var(--text-color-tertiary);
+  font-size: 16px;
+}
+
+.dateText {
+  font-size: 14px;
+}

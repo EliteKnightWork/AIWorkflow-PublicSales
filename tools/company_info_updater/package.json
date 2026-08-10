@@ -1,0 +1,16 @@
+{
+  "name": "forval-sp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/enrich.js",
+  "scripts": {
+    "enrich": "node src/enrich.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "googleapis": "^127.0.0"
+  }
+}

@@ -1,0 +1,374 @@
+/* NeuralButtonGroup - パルス効果付きアニメーションボタンのスタイル */
+
+.container {
+  /* ボタンの基本設定 */
+  --button-size: 100px;
+  --animation-enabled: 1;
+
+  position: relative;
+  width: var(--button-size);
+  height: var(--button-size);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  overflow: visible;
+
+  /* フォーカス時のアウトライン */
+  outline: none;
+  transition: transform 0.2s ease;
+}
+
+.container:hover:not(.disabled) {
+  transform: scale(1.05);
+}
+
+.container:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.container:focus-visible {
+  outline: 2px solid var(--app-orange-main);
+  outline-offset: 4px;
+}
+
+.container.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.sparkle {
+  position: absolute;
+  width: calc(var(--button-size) * 0.22);
+  height: calc(var(--button-size) * 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transform: scale(0.8);
+  animation: sparkleBlink 2.8s ease-out infinite;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.sparkle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sparkleTopLeft {
+  top: calc(var(--button-size) * 0.16);
+  left: calc(var(--button-size) * 0.18);
+  --sparkle-rotation: -18deg;
+  animation-delay: -0.6s;
+  animation-duration: 2.4s;
+}
+
+.sparkleBottomRight {
+  bottom: calc(var(--button-size) * 0.22);
+  right: calc(var(--button-size) * 0.18);
+  --sparkle-rotation: 12deg;
+  animation-delay: -1.8s;
+  animation-duration: 3s;
+}
+
+/* パルスレイヤーの基本設定 */
+.pulseLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pulseRing {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid;
+  opacity: 0.8;
+}
+
+/* 外側のパルスレイヤー（赤） */
+.pulseLayer[data-layer="outer-red"] {
+  animation: pulseOuter 2s infinite ease-in-out;
+  animation-delay: 0s;
+}
+
+.pulseLayer[data-layer="outer-red"] .pulseRing {
+  border-color: #ff5031;
+  animation: pulseRingOuter 2s infinite ease-in-out;
+}
+
+/* 第2パルスレイヤー（緑） */
+.pulseLayer[data-layer="second-green"] {
+  animation: pulseSecond 2s infinite ease-in-out;
+  animation-delay: 0.5s;
+}
+
+.pulseLayer[data-layer="second-green"] .pulseRing {
+  border-color: #00e21a;
+  animation: pulseRingSecond 2s infinite ease-in-out;
+}
+
+/* 第3パルスレイヤー（青） */
+.pulseLayer[data-layer="third-blue"] {
+  animation: pulseThird 2s infinite ease-in-out;
+  animation-delay: 1s;
+}
+
+.pulseLayer[data-layer="third-blue"] .pulseRing {
+  border-color: #00d0ff;
+  animation: pulseRingThird 2s infinite ease-in-out;
+}
+
+/* メインボタン */
+.mainButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(-45deg, rgba(73, 188, 238, 1) 0%, rgba(57, 75, 235, 1) 100%);
+  box-shadow: 0px 8px 25px 0px rgba(2, 117, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.container:not(.open) .mainButton {
+  animation: buttonHop 2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+.container:hover:not(.disabled) .mainButton {
+  box-shadow: 0px 12px 35px 0px rgba(2, 117, 255, 0.9);
+}
+
+/* アイコンコンテナ */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* チャットアイコン */
+.chatIcon {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.chatIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* アニメーション無効時のスタイル */
+.static .pulseLayer {
+  animation: none;
+}
+
+.static .pulseRing {
+  animation: none;
+}
+
+.static .sparkle {
+  animation: none;
+  opacity: 0.5;
+}
+
+.static .mainButton {
+  animation: none;
+}
+
+/* パルスアニメーション定義 */
+@keyframes pulseOuter {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseSecond {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseThird {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes pulseRingOuter {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulseRingSecond {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulseRingThird {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.3;
+  }
+}
+
+@keyframes sparkleBlink {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7) rotate(var(--sparkle-rotation, 0deg));
+  }
+  35% {
+    opacity: 0.85;
+    transform: scale(1) rotate(var(--sparkle-rotation, 0deg));
+  }
+  55% {
+    opacity: 0.4;
+    transform: scale(0.9) rotate(var(--sparkle-rotation, 0deg));
+  }
+  75% {
+    opacity: 0.75;
+    transform: scale(1.05) rotate(var(--sparkle-rotation, 0deg));
+  }
+}
+
+@keyframes buttonHop {
+  from {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .container {
+    --button-size: 80px;
+  }
+
+  .mainButton {
+    top: 12px;
+    left: 12px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .chatIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .mainButton {
+    box-shadow: 0px 8px 25px 0px rgba(2, 117, 255, 0.5);
+  }
+
+  .container:hover:not(.disabled) .mainButton {
+    box-shadow: 0px 12px 35px 0px rgba(2, 117, 255, 0.7);
+  }
+}
+
+/* ProjectChatが開いた状態のスタイル */
+.container.open .mainButton {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background:
+    linear-gradient(#fefefe, #fefefe) padding-box,
+    linear-gradient(-45deg, rgba(73, 188, 238, 1) 0%, rgba(57, 75, 235, 1) 100%) border-box;
+}
+
+.container.open .chatIcon {
+  color: #000000;
+}
+
+.container.open:hover:not(.disabled) .mainButton {
+  box-shadow:
+    0px 0px 0px 4px rgba(229, 242, 253, 1),
+    0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* アニメーション軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+  .pulseLayer {
+    animation: none;
+  }
+
+  .pulseRing {
+    animation: none;
+  }
+
+  .container {
+    transition: none;
+  }
+
+  .mainButton {
+    transition: none;
+    animation: none;
+  }
+
+  .sparkle {
+    animation: none;
+    opacity: 0.5;
+  }
+}

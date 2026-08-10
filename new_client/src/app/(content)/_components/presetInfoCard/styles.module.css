@@ -1,0 +1,21 @@
+.presetTitle {
+  color: #24365e;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.presetTagListBox {
+  gap: 8px;
+}
+
+.presetTag {
+  background-color: var(--bg-color-modal);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.presetTagText {
+  color: var(--bg-color-tag-text);
+  font-size: 14px;
+}

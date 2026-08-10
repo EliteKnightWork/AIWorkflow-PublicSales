@@ -1,0 +1,31 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+pre-commit:
+  parallel: true
+  commands:
+    new_client:
+      glob: 'new_client/src/**/*.{ts,tsx}'
+      root: 'new_client/'
+      skip:
+        - merge
+        - rebase
+      run: |
+        if [ -n "{staged_files}" ]; then
+          set -e
+          npx @biomejs/biome check --write {staged_files} || true
+        fi
+      stage_fixed: true
+      fail_text: pre-commit commands failed.
+
+pre-push:
+  parallel: true
+  commands:
+    new_client:
+      glob: 'new_client/src/**/*.{ts,tsx}'
+      root: 'new_client/'
+      run: |
+        # npx @biomejs/biome check --write ./src
+        # stop push if build failed.
+        # npx run build
+      stage_fixed: true
+      fail_text: pre-push commands failed.

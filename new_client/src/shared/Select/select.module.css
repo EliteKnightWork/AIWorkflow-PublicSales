@@ -1,0 +1,143 @@
+.selectTrigger {
+  width: 100%;
+  height: 56px;
+  padding: var(--spacing-4);
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-300);
+  background-color: var(--color-white-1000);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--color-black-800);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  cursor: pointer;
+  outline: none;
+}
+
+.selectTrigger:hover:not([data-disabled]) {
+  border-color: var(--color-black-500);
+  background-color: var(--bg-color-hover);
+  background-clip: border-box;
+}
+
+.selectTrigger[data-state="open"] {
+  border-color: var(--color-blue-700);
+  background-color: var(--color-black-100);
+  background-clip: border-box;
+}
+
+.selectTrigger[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.selectTrigger[data-placeholder] {
+  color: var(--color-black-400);
+  font-weight: 700;
+}
+
+.selectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black-800);
+  flex-shrink: 0;
+}
+
+.selectIcon span {
+  transition: transform 0.2s ease;
+}
+
+.selectTrigger[data-state="open"] .selectIcon span {
+  transform: rotate(180deg);
+}
+
+.selectContent {
+  overflow: hidden;
+  background-color: var(--color-white-1000);
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-300);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 50;
+  min-width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+}
+
+.selectContent[data-state="open"] {
+  animation: fadeIn 0.15s ease-out;
+}
+
+.selectContent[data-state="closed"] {
+  animation: fadeOut 0.15s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.selectViewport {
+  padding: var(--spacing-1);
+}
+
+.selectItem {
+  font-size: 14px;
+  line-height: 160%;
+  color: var(--color-black-800);
+  border-radius: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  position: relative;
+  user-select: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.selectItem[data-disabled] {
+  color: var(--color-black-400);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.selectItem[data-highlighted] {
+  outline: none;
+  background-color: var(--bg-color-hover);
+}
+
+.selectLabel {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: 12px;
+  line-height: 160%;
+  color: var(--color-black-400);
+  font-weight: 700;
+}
+
+.selectSeparator {
+  height: 1px;
+  background-color: var(--color-black-300);
+  margin: var(--spacing-1);
+}

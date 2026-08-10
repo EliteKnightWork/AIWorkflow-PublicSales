@@ -1,0 +1,73 @@
+.body {
+  background-color: var(--bg-color-primary);
+  padding: 24px;
+  gap: 1px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.grid {
+  gap: 1px;
+}
+
+.bidder {
+  color: var(--text-color-primary);
+  background-color: var(--bg-color-quaternary);
+  border-radius: 2px;
+  padding: 8px 16px;
+}
+
+.bidderInfo {
+  flex-wrap: wrap;
+}
+
+.registerButton {
+  width: 120px;
+  height: 40px;
+  border: 1px solid var(--border-color-separater);
+  border-radius: 64px;
+  border-width: 1px;
+  padding: 12px 16px;
+  gap: 4px;
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-tertiary);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.registerButton:hover {
+  opacity: 0.6;
+}
+
+.registerButton:disabled {
+  border: 1px solid var(--border-color-separater);
+  background-color: var(--bg-color-disabled);
+  color: var(--text-color-disabled);
+  opacity: 1;
+}
+
+.registerButton:disabled:hover {
+  opacity: 1;
+}
+
+.accountSettingButton {
+  text-decoration: underline;
+  background-color: transparent;
+  color: var(--app-blue-main);
+}
+
+.accountSettingButton:hover {
+  background-color: transparent;
+  color: var(--app-blue-main);
+}
+
+.accountSettingLink {
+  color: var(--app-blue-main);
+}
+
+.accountSettingLink:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,25 @@
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--config=playwright_e2e/config.json"
+      ]
+    },
+    "atlassian": {
+      "command": "/Users/yorozuokukenta/.asdf/installs/python/3.10.13/bin/mcp-atlassian",
+      "args": [],
+      "env": {
+        "CONFLUENCE_URL": "https://labid.atlassian.net/wiki",
+        "CONFLUENCE_USERNAME": "example@gmail.com",
+        "CONFLUENCE_API_TOKEN": "",
+        "JIRA_URL": "https://labid.atlassian.net",
+        "JIRA_USERNAME": "example@gmail.com",
+        "JIRA_API_TOKEN": ""
+      }
+    }
+  }
+}
+```

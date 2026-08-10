@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      subscription:
+        starts_on: 契約開始日
+        ends_on: 契約終了日
+  errors:
+    messages:
+      active_subscription_exists: 有効な契約が存在します

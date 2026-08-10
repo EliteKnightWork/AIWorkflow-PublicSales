@@ -1,0 +1,78 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-inline: auto;
+  width: 60%;
+  min-width: 300px;
+  max-width: 500px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+  z-index: 8000;
+  padding-inline: 24px;
+  padding-block: 24px;
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  padding: 16px !important;
+  font-weight: bold;
+  display: flex;
+}
+
+.headerTitle {
+  margin-inline: auto;
+  font-size: 16px;
+  margin-block: auto;
+}
+
+.modalContent {
+  padding: 20px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskInfoBox {
+  padding: 16px;
+  border-radius: var(--md, 8px);
+  border: 1px solid var(--border-color-separater);
+  background: var(--bg-color-quaternary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buttonRow {
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.buttonRow button {
+  width: 120px;
+}
+
+.buttonRow button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.cancelButton[class] {
+  color: var(--bg-color-quaternary);
+  background-color: var(--bg-color-tag-text);
+}
+
+.deleteButton[class] {
+  color: var(--bg-color-quaternary);
+  background-color: var(--app-strong);
+}

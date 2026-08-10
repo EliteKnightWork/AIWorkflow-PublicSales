@@ -1,0 +1,120 @@
+.iconButton {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* サイズ */
+.xl {
+  min-width: 48px;
+  min-height: 48px;
+  padding: var(--spacing-4);
+}
+
+.xl .material-icons {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.large {
+  padding: var(--spacing-3);
+}
+
+.large span {
+  font-size: 24px;
+}
+
+.medium {
+  padding: var(--spacing-2);
+}
+
+.medium span {
+  font-size: 24px;
+}
+
+.small {
+  padding: var(--spacing-2);
+}
+
+.small span {
+  font-size: 16px;
+}
+
+.xs {
+  padding: var(--spacing-1);
+}
+
+.xs span {
+  font-size: 16px;
+}
+
+/* 強弱 */
+.primary {
+  background-color: var(--color-orange-700);
+  color: var(--color-white-1000);
+}
+
+.primary:hover {
+  background-color: var(--color-orange-900);
+}
+
+.secondary {
+  background-color: var(--color-orange-50);
+  color: var(--color-orange-700);
+}
+
+.secondary:hover {
+  background-color: var(--color-orange-200);
+}
+
+.tertiary {
+  background-color: var(--color-black-800);
+  color: var(--color-white-1000);
+}
+
+.tertiary:hover {
+  background-color: var(--color-black-600);
+}
+
+.default {
+  background-color: var(--color-white-1000);
+  color: var(--color-black-800);
+}
+
+.default:hover {
+  background-color: var(--bg-color-hover);
+}
+
+/* 形状 */
+.round {
+  border-radius: var(--spacing-10);
+}
+
+.square {
+  border-radius: var(--spacing-2);
+}
+
+/* 無効化 */
+.iconButton:disabled {
+  background-color: var(--color-white-1000);
+  color: var(--text-color-disabled);
+  cursor: not-allowed;
+}
+
+.iconButton:disabled:hover {
+  background-color: var(--color-white-1000);
+  color: var(--text-color-disabled);
+}
+
+/* フォーカス状態 */
+.iconButton:focus-visible {
+  background-color: var(--bg-color-tertiary);
+  border: 1px solid var(--color-blue-700);
+  outline: none;
+}

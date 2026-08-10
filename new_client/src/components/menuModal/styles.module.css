@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  z-index: 4000;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  z-index: 4001;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.modalOutline {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px;
+  gap: 48px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.menuButton {
+  color: var(--text-color-dark-gray);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.menuButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+}

@@ -1,0 +1,39 @@
+.detailSearchButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  height: 56px;
+  width: 206px;
+  background: var(--bg-color-quaternary);
+  border: none;
+  border-radius: 64px;
+  box-shadow: 0px 2px 8px 0px var(--shadow-color-medium);
+  cursor: pointer;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-color-primary);
+  transition: background 0.2s;
+}
+
+.detailSearchButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-color-primary);
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--text-color-primary);
+  display: flex;
+  align-items: center;
+}

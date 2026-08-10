@@ -1,0 +1,10 @@
+.root {
+  width: 100%;
+}
+
+.container {
+  min-height: 100vh;
+  height: fit-content;
+  background-color: var(--color-black-100);
+  padding: var(--spacing-6);
+}

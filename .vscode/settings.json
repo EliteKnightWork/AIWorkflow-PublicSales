@@ -1,0 +1,13 @@
+{
+  "prettier.configPath": "client/.prettierrc.json",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "**/openapi.yml": "yaml"
+  },
+  "yaml.format.singleQuote": true,
+  "biome.lsp.bin": "new_client/node_modules/.bin/biome",
+  "biome.configurationPath": "new_client/biome.json"
+}

@@ -1,0 +1,150 @@
+.roundSelectTriggerButton {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color-primary);
+  border: 1px solid var(--border-color-separater);
+  /* min-width: 200px; */
+  width: 100%;
+  justify-content: space-between;
+  background-color: var(--bg-color-quaternary);
+  padding: 16px;
+}
+.roundSelectTrigger:hover {
+  opacity: 0.6;
+}
+
+.dropdownContent {
+  width: 100%;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  color: var(--text-color-primary);
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+  position: relative;
+  z-index: 2000;
+}
+
+.dropdownHeader {
+  padding: 8px;
+  border-bottom: 1px solid var(--gray-4);
+  text-align: left;
+}
+
+.dropdownFooter {
+  padding: 8px;
+  border-top: 1px solid var(--gray-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.selectAllButton {
+  width: 100%;
+  justify-content: flext-start;
+}
+
+.closeButton {
+  min-width: 80px;
+  max-width: 100px;
+}
+
+.roundSelectTriggerText {
+  text-align: left;
+  font-size: 14px;
+}
+
+.listBox {
+  padding: 8px;
+}
+
+.regionListBox {
+  font-size: 16px;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.selectedRegion {
+  font-weight: bold;
+  color: var(--text-color-tertiary);
+}
+
+.unselectedRegion {
+  color: var(--text-color-secondary);
+}
+
+.checkbox {
+  margin: 8px;
+}
+
+.checkedCheckBox {
+  background-color: var(--app-blue-main) !important;
+  border-color: var(--app-blue-main) !important;
+}
+
+.parentBox {
+  background-color: var(--bg-color-secondary) !important;
+}
+
+.checkedParentBox {
+  border: 1px solid var(--app-blue-main);
+  background-color: var(--app-blue-secondary);
+}
+
+.parentBox.selectedParentBox {
+  background-color: var(--app-blue-secondary) !important;
+}
+
+.parentBox:hover {
+  background-color: var(--app-blue-secondary) !important;
+  transform: scale(1.05);
+}
+
+/* allCheckedクラスが最優先になるように詳細度を上げる */
+.allChecked .parentBox,
+.allChecked .parentBox.selectedParentBox,
+.allChecked .parentBox:hover {
+  background-color: var(--app-orange) !important;
+}
+
+.regionText {
+  font-size: 16px;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.checkedRegionText {
+  color: var(--app-blue-main);
+}
+
+.prefectureListBoxItem {
+  background-color: var(--bg-color-secondary) !important;
+  border-radius: 4px;
+  margin: 8px;
+}
+
+.prefectureListBoxItem > * {
+  background: transparent !important;
+}
+
+.parentBox.prefectureListBoxItem.checked {
+  background-color: var(--app-blue-secondary) !important;
+}
+
+.prefectureListBoxItem:hover {
+  opacity: 0.8;
+}
+
+.prefectureText {
+  font-size: 16px;
+  flex: 1;
+}
+
+.prefectureListBoxItem.checked {
+  background-color: var(--app-blue-secondary) !important;
+}
+
+.allChecked {
+  background-color: var(--app-blue-secondary) !important;
+}

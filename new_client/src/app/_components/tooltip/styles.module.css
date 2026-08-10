@@ -1,0 +1,14 @@
+.tooltip {
+  border-radius: 16px;
+  padding: 12px;
+  color: var(--text-color-tertiary);
+  background-color: var(--bg-color-quaternary);
+  gap: 8px;
+  box-shadow: 0px 10px 20px 0px var(--shadow-color-light);
+  border-bottom: 8px;
+  z-index: 2;
+}
+
+.Arrow {
+  fill: var(--color-white);
+}

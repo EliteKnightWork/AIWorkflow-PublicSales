@@ -1,0 +1,285 @@
+.infoBox {
+  background-color: var(--bg-color-info);
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  color: var(--text-color-info);
+}
+
+.infoMessage {
+  width: 100%;
+  color: var(--app-blue-main);
+}
+
+.warningBox {
+  background-color: var(--bg-color-warning);
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  color: var(--app-yellow-light);
+}
+
+.warningMessage {
+  width: 100%;
+  color: var(--app-yellow-light);
+}
+
+.warningDescription {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.presetForm {
+  padding: 16px;
+  gap: 40px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTitle {
+  color: var(--app-black-secondary);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.input {
+  background-color: var(--bg-color-primary);
+  color: var(--text-color-primary);
+  width: 100%;
+  border: 1px solid var(--border-color-separater);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.input:focus {
+  border: 1.5px solid var(--app-blue-main);
+  outline: none;
+}
+
+.procedureTypeGroupBox {
+  padding: 8px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.procedureTypeGroupBox button {
+  margin-right: 4px;
+}
+
+.buttonBox {
+  justify-content: space-between;
+  padding-inline: 32px;
+}
+
+.buttonBox button:hover {
+  opacity: 0.6;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.saveButton {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.errorMessageBox {
+  padding-inline: 16px;
+  padding-block: 16px;
+  background-color: var(--bg-color-error);
+  border-radius: 24px;
+  font-weight: bold;
+  color: var(--text-color-error);
+}
+
+.textArea {
+  border-radius: 8px;
+  background-color: var(--color-white);
+  min-height: 200px;
+}
+
+.textArea textarea {
+  padding: 16px;
+  color: var(--color-black);
+}
+
+.inputFormatButtonBox {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.disabledText {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.tooltip {
+  gap: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-tertiary);
+  background-color: var(--color-white);
+}
+
+.tooltipIcon {
+  color: var(--border-color-checkbox);
+}
+
+.radioContainer {
+  gap: 8px;
+}
+
+.select {
+  background-color: var(--bg-color-primary);
+  width: 100%;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  appearance: none;
+}
+
+.formTitleBox {
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-primary);
+  border-radius: 8px;
+}
+
+.inputWithIcon > span {
+  position: absolute;
+  left: 16px;
+  color: var(--text-color-tertiary);
+  pointer-events: none;
+}
+
+.inputWithIcon > input {
+  padding-left: 48px;
+}
+
+.tooltipContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--app-blue-main);
+  background-color: var(--bg-color-info);
+  padding: 12px 16px;
+  border: 1px solid var(--bg-color-info);
+  border-radius: 8px;
+}
+
+.tooltipText {
+  font-size: 14px;
+  color: var(--app-blue-main);
+}
+
+.textAreaContainer {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color-separater);
+}
+
+.textAreaContainerFocused {
+  border: 1px solid var(--app-blue-main);
+}
+
+.businessDescriptionTextArea {
+  min-height: 160px;
+  resize: none;
+  background-color: var(--color-white) !important;
+  border: none;
+  width: 100%;
+  padding: 0;
+  font-size: 16px;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.businessDescriptionTextArea:focus {
+  background-color: var(--color-white) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.formatAddButton {
+  width: fit-content;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid var(--app-blue-main);
+  background-color: transparent;
+  color: var(--text-color-tertiary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.formatAddButton:hover {
+  opacity: 0.6;
+}
+
+.formatAddButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.formatAddButton input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--app-blue-main);
+}
+
+.formatAddButtonChecked {
+  border-color: var(--app-blue-main) !important;
+}
+.formatAddButtonUnchecked {
+  border-color: var(--border-color-separater) !important;
+}
+
+.checkBoxParentBoxChecked {
+  border: 1px solid var(--app-blue-main) !important;
+  background-color: var(--app-blue-secondary) !important;
+}
+
+.checkBoxChecked {
+  background-color: var(--app-blue-main) !important;
+  border-color: var(--app-blue-main) !important;
+}
+
+.checkBoxCheckedText {
+  color: var(--text-color-tertiary);
+}

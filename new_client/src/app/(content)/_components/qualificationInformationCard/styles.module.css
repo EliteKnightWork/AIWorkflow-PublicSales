@@ -1,0 +1,20 @@
+.body {
+  background-color: var(--bg-color-primary);
+  padding: 24px;
+  gap: 1px;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.grid {
+  gap: 1px;
+}
+
+.bidder {
+  background-color: var(--bg-color-quaternary);
+  border-radius: 2px;
+  padding: 8px 16px;
+}
+
+.bidderInfo {
+  flex-wrap: wrap;
+}

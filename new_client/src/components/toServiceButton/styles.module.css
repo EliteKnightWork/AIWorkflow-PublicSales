@@ -1,0 +1,14 @@
+.mypageButton {
+  color: var(--app-orange-main);
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 16px;
+  padding-inline: 36px;
+  padding-block: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.mypageButton:hover {
+  background: var(--border-color-separater);
+}

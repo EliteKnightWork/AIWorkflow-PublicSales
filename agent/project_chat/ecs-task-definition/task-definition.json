@@ -1,0 +1,78 @@
+{
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "containerDefinitions": [
+        {
+            "cpu": 0,
+            "environment": [],
+            "essential": true,
+            "image": "677601128272.dkr.ecr.ap-northeast-1.amazonaws.com/labid-agent-dev:17",
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/logs/dev/labid-agent-dev",
+                    "awslogs-region": "ap-northeast-1",
+                    "awslogs-stream-prefix": "labid-agent-dev"
+                }
+            },
+            "mountPoints": [],
+            "name": "labid-agent-dev",
+            "portMappings": [
+                {
+                    "appProtocol": "http",
+                    "containerPort": 3001,
+                    "hostPort": 3001,
+                    "name": "agent",
+                    "protocol": "tcp"
+                }
+            ],
+            "systemControls": [],
+            "volumesFrom": []
+        }
+    ],
+    "cpu": "256",
+    "executionRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-execution-role-dev",
+    "family": "labid-agent-dev",
+    "memory": "512",
+    "networkMode": "awsvpc",
+    "placementConstraints": [],
+    "registeredAt": "2025-09-19T10:59:22.441Z",
+    "registeredBy": "arn:aws:iam::677601128272:user/daiki.ikemizu",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "revision": 22,
+    "status": "ACTIVE",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:677601128272:task-definition/labid-agent-dev:22",
+    "taskRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-task-role-dev",
+    "volumes": [],
+    "tags": []
+}

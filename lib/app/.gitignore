@@ -1,0 +1,7 @@
+node_modules
+venv
+volume
+.serverless
+__pycache__
+.localstack
+.env

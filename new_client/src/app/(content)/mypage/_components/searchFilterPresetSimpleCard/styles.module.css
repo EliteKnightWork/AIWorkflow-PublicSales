@@ -1,0 +1,18 @@
+.presetCard {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  background-color: transparent;
+  border-bottom: 1px solid var(--gray-6);
+}
+
+.presetCard:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.presetCard:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-bottom: none;
+}

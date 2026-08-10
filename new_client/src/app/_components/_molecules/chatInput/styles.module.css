@@ -1,0 +1,30 @@
+.chatInput {
+  border-radius: 40px;
+  padding-inline: 16px;
+  padding-block: 4px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.chatInputTextarea {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  flex: 1;
+  font-weight: bold;
+}
+
+.chatInputTextarea :global(.rt-TextAreaInput) {
+  color: var(--text-color-quaternary);
+  line-height: 26px;
+}
+
+.chatInputTextarea :global(.rt-TextAreaInput::placeholder) {
+  color: var(--text-color-quaternary);
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.characterCount {
+  text-align: right;
+  padding-right: 8px;
+}

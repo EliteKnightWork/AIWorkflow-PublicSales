@@ -1,0 +1,56 @@
+.membersArea {
+  padding: 16px;
+  margin-bottom: 80px;
+}
+
+.membersTable {
+  border: 1px solid var(--border-color-separater);
+  border-radius: 8px;
+}
+
+.membersTableHeader {
+  background-color: #f5f6f9;
+}
+
+.membersTableHeaderCell {
+  padding: 16px;
+}
+
+.membersTableHeaderCellName {
+  border-right: 1px solid var(--border-color-separater);
+}
+
+.membersTableCell {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+.membersTableCellName {
+  border-right: 1px solid var(--border-color-separater);
+}
+
+.bottomButtonArea {
+  position: fixed;
+  bottom: 0;
+  /* サイドメニューのwidthに依存 */
+  left: 240px;
+  padding: 16px;
+  border-top: 1px solid var(--border-color-separater);
+  width: calc(100% - 240px);
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: right;
+  gap: 16px;
+}
+
+.memberLinkButton {
+  background-color: var(--app-orange-main);
+  color: var(--color-white);
+  padding: 12px 24px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

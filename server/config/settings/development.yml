@@ -1,0 +1,11 @@
+elasticsearch:
+  host: elasticsearch
+  port: 9200
+mail:
+  delivery_method: letter_opener_web
+  raise_delivery_errors: true
+  default_url_options:
+    host: localhost:3000
+aws:
+  s3:
+    endpoint: http://minio.127.0.0.1.nip.io:9000

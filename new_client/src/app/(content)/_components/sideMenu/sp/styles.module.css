@@ -1,0 +1,66 @@
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  background: #ffffff33;
+  z-index: 10;
+}
+
+.headerMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 80%;
+  background-color: var(--bg-color-primary);
+  z-index: 11;
+  padding: 40px 0px;
+}
+
+.sideMenuFooter {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 16px;
+}
+
+.sideMenuFooter a {
+  color: var(--text-color-secondary);
+}
+
+.sideLoginButton {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  padding: 8px 16px;
+  background-color: var(--bg-color-primary);
+  border: 1px solid var(--bg-color-toast);
+  font-size: 14px;
+  font-weight: 700;
+  color: inherit;
+  width: 80%;
+  height: 48px;
+  border-radius: 40px;
+}
+
+.sideLoginButton:hover {
+  cursor: pointer;
+}
+
+.sideLoginIcon {
+  font-size: 16px !important;
+}

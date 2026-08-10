@@ -1,0 +1,30 @@
+.menuTrigger {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color-tertiary);
+}
+
+.menuContent {
+  background-color: var(--bg-color-quaternary);
+  width: 264px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.menuItem {
+  padding-inline: 24px;
+  padding-block: 16px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menuItem:hover {
+  opacity: 0.7;
+}
+
+.menuItem:not(:last-child) {
+  border-bottom: 1px solid #f1f6fa;
+}
+
+.deleteText {
+  color: var(--text-color-error);
+}

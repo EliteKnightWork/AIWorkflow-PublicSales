@@ -1,0 +1,51 @@
+.projectCard {
+  display: none;
+
+  @media screen and (max-width: 540px) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 16px !important;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    background-color: var(--bg-color-quaternary);
+  }
+}
+
+.projectCard.noShadow {
+  box-shadow: none;
+  border: 1px solid var(--border-color-tertiary);
+  border-radius: 0px;
+}
+
+.projectCard:hover {
+  opacity: 0.6;
+}
+
+.projectCardIcon {
+  font-size: 32px !important;
+}
+
+.openInNewIcon {
+  font-size: 24px !important;
+}
+
+.projectInfo {
+  flex-wrap: wrap;
+}
+
+.projectTitle {
+  font-size: 20px !important;
+}
+
+.newArrivalBadge {
+  background-color: #000;
+  color: #fff;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid #000;
+}

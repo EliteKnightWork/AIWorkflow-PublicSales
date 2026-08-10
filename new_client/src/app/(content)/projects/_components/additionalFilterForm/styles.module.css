@@ -1,0 +1,248 @@
+.additionalFilterForm {
+  padding-top: 16px;
+  padding-inline: 24px;
+  padding-bottom: 16px;
+  gap: 40px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTitle {
+  color: var(--app-black-secondary);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.input {
+  background-color: var(--bg-color-primary);
+  width: 100%;
+  border: 1px solid var(--border-color-separater);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.input:focus {
+  border: 1.5px solid var(--app-blue-main);
+  outline: none;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-primary);
+  border-radius: 8px;
+}
+
+.inputWithIcon > span {
+  position: absolute;
+  left: 16px;
+  color: var(--text-color-tertiary);
+  pointer-events: none;
+}
+
+.inputWithIcon > input {
+  padding-left: 48px;
+}
+
+.select {
+  background-color: var(--bg-color-primary);
+  width: 100%;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  appearance: none;
+}
+
+.procedureTypeGroupBox {
+  padding: 8px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.procedureTypeGroupBox button {
+  margin-right: 4px;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.saveButton {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.buttonBox {
+  width: 100%;
+  justify-content: center;
+  gap: 16px;
+}
+
+.buttonBox button:hover {
+  opacity: 0.6;
+}
+
+.radioContainer {
+  gap: 8px;
+}
+
+.cancelButton {
+  background-color: var(--bg-color-quaternary);
+  color: var(--bg-color-tag-text);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.submitButton {
+  background-color: var(--bg-color-tag-text);
+  color: var(--color-white);
+  border-radius: 24px;
+  padding-block: 12px;
+  padding-inline: 24px;
+  min-width: 320px;
+  font-weight: bold;
+}
+
+.tooltip {
+  gap: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-primary);
+  background-color: var(--color-white);
+}
+
+.tooltipIcon {
+  color: var(--border-color-checkbox);
+}
+
+.formTitleBox {
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.presetButton {
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: var(--text-color-tertiary);
+  border: 1px solid var(--border-color-separater);
+  box-shadow: none;
+  margin-right: 16px;
+}
+
+.presetButton:hover {
+  opacity: 0.6;
+}
+
+.tooltipContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--app-blue-main);
+  background-color: var(--bg-color-info);
+  padding: 12px 16px;
+  border: 1px solid var(--bg-color-info);
+  border-radius: 8px;
+}
+
+.tooltipText {
+  font-size: 14px;
+  color: var(--app-blue-main);
+}
+
+.businessDescriptionTextArea {
+  min-height: 160px;
+  resize: none;
+  background-color: var(--color-white);
+  width: 100%;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.textAreaContainer {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color-separater);
+}
+
+.textAreaContainerFocused {
+  border: 1px solid var(--app-blue-main);
+}
+
+.formatAddButton {
+  width: fit-content;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid var(--app-blue-main);
+  background-color: transparent;
+  color: var(--text-color-tertiary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.formatAddButton:hover {
+  opacity: 0.6;
+}
+
+.formatAddButton input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--app-blue-main);
+}
+
+.formatAddButtonChecked {
+  border-color: var(--app-blue-main) !important;
+}
+.formatAddButtonUnchecked {
+  border-color: var(--border-color-separater) !important;
+}
+
+.checkBoxParentBoxChecked {
+  border: 1px solid var(--app-blue-main) !important;
+  background-color: var(--app-blue-secondary) !important;
+}
+
+.checkBoxChecked {
+  background-color: var(--app-blue-main) !important;
+  border-color: var(--app-blue-main) !important;
+}
+
+.checkBoxCheckedText {
+  color: var(--text-color-tertiary);
+}
+
+.separator {
+  height: 2px;
+  border-color: var(--border-color-separater);
+}
+
+.noteText {
+  font-size: 14px;
+}

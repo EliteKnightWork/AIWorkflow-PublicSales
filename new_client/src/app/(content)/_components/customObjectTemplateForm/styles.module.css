@@ -1,0 +1,505 @@
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  font-family: var(--font-geist-sans, "Roboto", "Noto Sans JP", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color-tertiary);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.inputContainerBorderless {
+  border: none;
+}
+
+.titleInput {
+  background: var(--bg-color-quaternary);
+  border-radius: 8px;
+  padding: 16px 8px;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+}
+
+.titleInput::placeholder {
+  color: var(--text-color-gray);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-color-separater);
+  width: 100%;
+}
+
+.itemsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.itemCard {
+  background: var(--bg-color-quaternary);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemTitleInput {
+  flex: 1;
+  background: transparent;
+  border-radius: 8px;
+  padding: 8px;
+  font: inherit;
+  color: inherit;
+}
+
+.requiredText {
+  color: var(--text-color-secondary);
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.requiredTextActive {
+  color: var(--app-blue-main);
+  font-weight: 400;
+}
+
+.toggleButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-gray);
+  font-size: 40px;
+  border-radius: 2px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.toggleButtonActive {
+  color: var(--app-blue-main);
+}
+
+.toggleButton:hover {
+  opacity: 0.7;
+}
+
+.reorderButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.reorderButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-secondary);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reorderButton:hover:not(:disabled) {
+  opacity: 0.75;
+}
+
+.reorderButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.dragHandle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: var(--text-color-secondary);
+  cursor: grab;
+  user-select: none;
+}
+
+.dragHandle span {
+  font-size: 24px;
+}
+
+.descriptionInput {
+  background: var(--bg-color-quaternary);
+  border: none;
+  border-radius: 0;
+  padding: 8px 0;
+  font-family: var(--font-geist-sans, "Roboto", "Noto Sans JP", sans-serif) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+  color: inherit;
+}
+
+.descriptionInput::placeholder {
+  color: var(--text-color-gray);
+}
+
+.underlineContainer {
+  border: 1px solid transparent !important;
+  border-bottom-color: var(--border-color-separater) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--bg-color-quaternary);
+}
+
+.underlineContainer:hover,
+.underlineContainer:focus-within {
+  border: 1px solid transparent !important;
+  border-bottom-color: var(--border-color-separater) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--bg-color-quaternary);
+}
+
+.selectWrapper {
+  position: relative;
+  background: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-gray);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.dropdownContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.typeSelect {
+  background: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.dropdownContainer > span {
+  color: var(--text-color-secondary);
+  font-size: 24px;
+  pointer-events: none;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  background: var(--bg-color-quaternary);
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px var(--shadow-color-light);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  gap: 16px;
+}
+
+.dropdownClose {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-tertiary);
+}
+
+.dropdownClose span {
+  font-size: 24px;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: var(--border-color-separater);
+  width: 100%;
+}
+
+.dropdownCategory {
+  padding: 16px 24px 8px;
+  font-weight: 400;
+  color: var(--text-color-secondary);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 24px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+  font: inherit;
+  color: inherit;
+  font-weight: 400;
+}
+
+.dropdownItem:hover {
+  background: var(--bg-color-modal);
+}
+
+.dropdownItem span:first-child {
+  font-size: 24px;
+  color: var(--text-color-gray);
+}
+
+.deleteButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  align-self: flex-end;
+}
+
+.deleteButton:hover {
+  opacity: 0.7;
+}
+
+.deleteText {
+  color: var(--text-color-secondary);
+  font-weight: 400;
+}
+
+.addButton {
+  background: var(--bg-color-quaternary);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+}
+
+.addButton:hover {
+  opacity: 0.7;
+}
+
+.addText {
+  font-weight: 400;
+  color: var(--text-color-tertiary);
+}
+
+.footerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 32px;
+  background: var(--bg-color-modal);
+  font-family: var(--font-geist-sans, "Roboto", "Noto Sans JP", sans-serif);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color-tertiary);
+}
+
+.footerButtons button {
+  font-weight: 700;
+}
+
+.cancelButton {
+  flex: 1;
+  max-width: 343px;
+  min-width: 320px;
+  height: 64px;
+  background: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-separater);
+  border-radius: 40px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.cancelButton:hover {
+  background: var(--bg-color-modal);
+}
+
+.saveButton {
+  flex: 1;
+  max-width: 343px;
+  min-width: 320px;
+  height: 64px;
+  background: var(--button-color-secondary);
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-white);
+}
+
+.saveButton:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.saveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.optionsSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.optionItem span {
+  font-size: 24px;
+  color: var(--text-color-gray);
+}
+
+.optionInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.optionInput::placeholder {
+  color: var(--text-color-gray);
+}
+
+.optionRemoveButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color-tertiary);
+}
+
+.optionRemoveButton:hover {
+  opacity: 0.7;
+}
+
+.optionRemoveButton span {
+  font-size: 24px;
+}
+
+.addOptionButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  /* align-items: flex-start; */
+  /* justify-content: flex-start; */
+  align-self: flex-start;
+  gap: 8px;
+  padding: 8px;
+}
+
+.addOptionButton:hover {
+  opacity: 0.7;
+}
+
+.addOptionText {
+  color: var(--text-color-secondary);
+  font: inherit;
+  font-weight: 400;
+}
+
+.membersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.memberItem {
+  padding: 4px 8px;
+}
+
+.memberTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-color-red);
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+.memberTag span {
+  font-size: 16px;
+  color: var(--border-color-pink);
+}
+
+.memberName {
+  font: inherit;
+  color: inherit;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.moreMembersText {
+  padding: 8px;
+  color: var(--text-color-secondary);
+  font: inherit;
+  font-weight: 400;
+  text-align: center;
+}
+
+.open {
+  border: none;
+}

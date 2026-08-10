@@ -1,0 +1,17 @@
+.newArraivalTag {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: 700;
+  border: 1px solid var(--color-black);
+}
+
+.newArraivalSmallTag {
+  padding: 4px;
+  font-size: 12px;
+}
+
+.newArraivalLargeTag {
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 14px;
+}

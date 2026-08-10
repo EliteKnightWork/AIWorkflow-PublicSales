@@ -1,0 +1,4 @@
+.tableContainer {
+  background-color: var(--bg-color-quaternary);
+  padding-bottom: 16px;
+}

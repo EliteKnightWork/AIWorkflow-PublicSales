@@ -1,0 +1,42 @@
+.messageArea {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+}
+
+.userMessage {
+  background: var(--bg-color-message);
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 70%;
+  margin-left: auto;
+}
+
+.systemMessage {
+  background: rgba(0, 0, 0, 0.2);
+  color: white !important;
+  padding: 8px 8px 8px 24px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.systemMessage p {
+  color: white !important;
+}
+
+.copyButtonArea {
+  margin-top: auto;
+  max-width: 40px !important;
+  min-width: 40px !important;
+}
+
+.copyButton {
+  color: white !important;
+  max-width: 40px !important;
+  min-width: 40px !important;
+  background: rgba(0, 0, 0, 0.2);
+}
+.copyButton:hover {
+  opacity: 0.6;
+  background: none !important;
+}

@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.contentHeaderWrapper {
+  /* 宙に浮かせて表示する */
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.projectTitleContainerMobile {
+  padding-top: 100px !important;
+}
+
+.projectTitleContainerPc {
+  padding-top: 88px !important;
+}

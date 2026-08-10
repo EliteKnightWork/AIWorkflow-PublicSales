@@ -1,0 +1,28 @@
+.suggestionList {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.suggestionChip {
+  background-color: var(--bg-color-modal);
+  color: var(--text-color-tertiary);
+  font-size: 14px;
+  padding-inline: 16px;
+  padding-block: 8px;
+}
+
+.iconButton {
+  width: 16px;
+  height: 16px;
+  color: var(--color-secondary);
+  background-color: transparent;
+}
+
+.iconButton span {
+  font-size: 16px !important;
+}

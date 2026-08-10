@@ -1,0 +1,46 @@
+.contentHeader {
+  background-color: var(--color-white);
+  font-size: 12px;
+  padding: 12px 24px;
+
+  @media screen and (max-width: 540px) {
+    padding: 8px 16px;
+    margin-top: 56px;
+  }
+}
+
+.arrowIcon {
+  font-size: 17px !important;
+}
+
+.tooltip {
+  background-color: var(--color-white);
+  padding: 0px;
+  color: var(--text-color-tertiary);
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-content: center;
+  width: 100%;
+}
+
+.breadcrumb {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* 最後以外のbreadcrumb要素に適用するスタイル */
+.breadcrumb:not(:last-child) {
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.breadcrumbText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

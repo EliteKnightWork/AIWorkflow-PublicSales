@@ -1,0 +1,178 @@
+.noItemFlex {
+  font-size: 20px;
+  text-align: center;
+}
+
+.noItemFlex button {
+  color: var(--bg-color-quaternary);
+  background-color: var(--app-orange-main);
+  border-radius: 40px;
+  display: flex;
+  height: 56px;
+  min-width: 288px;
+  max-width: 320px;
+  min-height: 56px;
+  padding: 12px 16px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.noItemFlex button:hover {
+  opacity: 0.6;
+}
+
+.mypageContentHeader {
+  background-color: var(--color-white);
+  font-size: 12px;
+  min-height: 64px;
+}
+
+.mypageContentBox {
+  background-color: var(--bg-color-tertiary);
+  height: "inherit";
+  width: 100%;
+}
+
+.mypageContentBoard {
+  background-color: var(--color-white);
+  padding-inline: 16px;
+  border-radius: 16px;
+  gap: 16px;
+  position: relative;
+}
+
+.mypageContentBoxTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mypageExpandIcon {
+  font-size: 32px !important;
+}
+
+.mypageContentHeader {
+  cursor: pointer;
+  padding-block: 8px;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.projectCardBox {
+  max-width: 25%;
+  min-width: 25%;
+}
+
+.projectCardBox p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.leftScrollButton {
+  position: absolute;
+  left: 16px;
+  margin-left: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border-color-primary);
+  align-self: center;
+  height: 56px;
+  width: 56px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+  z-index: 11;
+}
+
+.rightScrollButton {
+  position: absolute;
+  right: 16px;
+  margin-right: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--border-color-primary);
+  align-self: center;
+  height: 56px;
+  width: 56px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+}
+
+.leftScrollButton:hover,
+.rightScrollButton:hover {
+  cursor: pointer;
+}
+
+.rightScrollIcon,
+.leftScrollIcon {
+  color: var(--color-black);
+  font-size: 42px !important;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0px 8px;
+  gap: 16px;
+  min-width: 100%;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.messageBox {
+  padding-block: 24px;
+  padding-inline: 40px;
+  background-color: var(--bg-color-tertiary);
+  border-radius: 16px;
+  width: 100%;
+}
+
+.messageText {
+  font-weight: 700;
+}
+
+.messageButton[class] {
+  font-weight: 600;
+  color: var(--bg-color-quaternary);
+  box-shadow: none;
+  padding: 16px;
+}
+
+.messageButtonBox {
+  min-width: 128px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandableContent {
+  padding-bottom: 16px;
+}
+
+.downloadButton {
+  border-radius: 64px;
+  color: var(--text-color-tertiary);
+  background: var(--bg-color-quaternary);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.16);
+
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-block: 12px;
+  padding-inline: 16px;
+  cursor: pointer;
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-a2);
+}
+
+.downloadButton:disabled {
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color-secondary);
+  cursor: not-allowed;
+}

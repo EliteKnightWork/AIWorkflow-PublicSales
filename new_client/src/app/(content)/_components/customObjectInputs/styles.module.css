@@ -1,0 +1,227 @@
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.textField {
+  background-color: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-gray);
+  border-radius: 8px;
+  padding: 0px 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.textAreaField {
+  height: auto;
+  min-height: 120px;
+  align-items: stretch;
+}
+
+.countRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+  margin-top: 4px;
+}
+
+.countText {
+  color: var(--text-color-gray);
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.textFieldInput {
+  flex: 1;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+}
+
+.textFieldInput::placeholder {
+  color: var(--text-color-gray);
+}
+
+.textFieldInput:placeholder-shown {
+  color: var(--text-color-gray);
+}
+
+.textFieldInput:not(:placeholder-shown) {
+  color: var(--text-color-tertiary);
+}
+
+/* number入力のスピンボタンを非表示（Chrome/Safari/Edge/Opera） */
+.textFieldInput::-webkit-outer-spin-button,
+.textFieldInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/* number入力のスピンボタンを非表示（Firefox） */
+.textFieldInput[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.textFieldTextarea {
+  flex: 1;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  height: 100%;
+}
+
+.textFieldTextarea::placeholder {
+  color: var(--text-color-gray);
+}
+
+.textFieldTextarea:placeholder-shown {
+  color: var(--text-color-gray);
+}
+
+.textFieldTextarea:not(:placeholder-shown) {
+  color: var(--text-color-tertiary);
+}
+
+.selectField {
+  background-color: var(--bg-color-quaternary);
+  border: 1px solid var(--border-color-gray) !important;
+  border-radius: 8px;
+  padding: 0px 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.selectField :global(.react-datepicker-wrapper) {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.selectField :global(.react-datepicker__input-container) {
+  width: 100%;
+  height: 100%;
+}
+
+.selectFieldInput {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color-gray);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.selectFieldInput::placeholder {
+  color: var(--text-color-gray);
+}
+
+.personTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: var(--bg-color-pink-soft);
+  color: var(--text-color-pink-deep);
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fieldWithMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inlineErrorMessage {
+  padding-left: 16px;
+}
+
+.checkboxParentOverride {
+  padding: 16px !important;
+}
+
+/* AppCheckbox 見た目のオーバーライド */
+.checkboxParentCheckedOverride {
+  background-color: var(--bg-color-quaternary) !important;
+  padding: 16px !important;
+  border: 1px solid transparent !important;
+}
+
+.checkboxRootOverride {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  margin: 0 !important;
+}
+
+.checkboxRootCheckedOverride {
+  background-color: var(--app-blue-main) !important;
+  border-color: var(--border-color-blue) !important;
+}
+
+.checkboxTextCheckedOverride {
+  color: var(--text-color-primary) !important;
+}
+
+.radioParentOverride {
+  padding: 16px !important;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* AppRadio のテーマ切替 */
+.radioBlueTheme {
+  --app-orange-main: var(--app-blue-main);
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}

@@ -1,0 +1,40 @@
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTitle {
+  color: var(--app-black-secondary);
+  font-weight: 700;
+}
+
+.input {
+  background-color: var(--bg-color-primary);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color-separater);
+  accent-color: var(--app-blue-main);
+}
+
+.input:focus {
+  border: 1.5px solid var(--app-blue-main);
+  outline: none;
+}
+
+.presetButton {
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: var(--text-color-tertiary);
+  border: 1px solid var(--border-color-separater);
+  box-shadow: none;
+  margin-right: 16px;
+}
+
+.presetButton:hover {
+  color: var(--app-blue-main);
+  border: 1px solid var(--app-orange-secondary);
+  background: var(--app-orange-light);
+  box-shadow: none;
+  cursor: pointer;
+}

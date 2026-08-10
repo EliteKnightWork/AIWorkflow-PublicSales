@@ -1,0 +1,72 @@
+.CheckboxRoot {
+  all: unset;
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  margin: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--border-color-checkbox);
+  border: 2px solid var(--border-color-checkbox);
+  background-color: transparent;
+}
+
+.CheckboxRoot.checked {
+  background-color: var(--app-orange-main);
+  border-color: var(--app-orange-main);
+}
+
+.disabledCheckBox {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.disabledText {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+.CheckboxIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-color-primary);
+}
+
+.checkIcon {
+  font-size: 12px !important;
+}
+
+.Label {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.Label.checked {
+  color: var(--app-orange-main);
+}
+
+.parentBox {
+  background-color: var(--bg-color-quaternary);
+  padding: 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.parentBox.checked {
+  background-color: var(--app-orange-light);
+  padding: 8px;
+  border: 1px solid var(--app-orange-secondary);
+}
+
+.CheckboxLabel {
+  height: 100%;
+  cursor: pointer;
+}

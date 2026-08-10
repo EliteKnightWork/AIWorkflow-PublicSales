@@ -1,0 +1,53 @@
+.dropdownContent {
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  color: var(--text-color-primary);
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+}
+
+.checkboxItem {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.checkboxItem:hover {
+  background-color: var(--gray-3);
+}
+
+.itemIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+}
+
+.dropdownHeader {
+  padding: 8px;
+  border-bottom: 1px solid var(--gray-4);
+}
+
+.dropdownFooter {
+  padding: 8px;
+  border-top: 1px solid var(--gray-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.selectAllButton {
+  width: 100%;
+  justify-content: center;
+}
+
+.closeButton {
+  min-width: 80px;
+}

@@ -1,0 +1,9 @@
+client_domain: localhost:8080
+aws:
+  region: ap-northeast-1
+  s3:
+    bucket:
+      db_export: labid-db-export
+      llm_tmp: labid-llm-tmp
+      sitemap: labid-sitemap-bucket-prod
+      duplicated_awarded_project_deletion: labid-duplicated-awarded-project-deletion

@@ -1,0 +1,45 @@
+.recommendSettingArea {
+  margin: 24px;
+  padding: 20px;
+}
+
+.recommendSettingHeader {
+  margin-bottom: 16px;
+}
+
+.recommendSettingTitle {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-color-tertiary);
+}
+
+.recommendSettingList {
+  border: 1px solid var(--border-color-separater);
+  border-radius: 8px;
+}
+
+.recommendSettingListRow {
+  padding: 16px;
+  font-size: 14px;
+}
+
+.recommendSettingListRow:not(:last-child) {
+  border-bottom: 1px solid var(--border-color-separater);
+}
+
+.notificationFilterButton {
+  border-radius: 24px !important;
+  padding-block: 12px;
+  padding-inline: 16px;
+  border: 1px solid var(--bg-color-tag-text);
+}
+
+.notificationFilterButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.notificationFilterButton span {
+  font-weight: bold;
+  font-size: 12px;
+}

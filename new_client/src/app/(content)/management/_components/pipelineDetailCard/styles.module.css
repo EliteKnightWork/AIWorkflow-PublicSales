@@ -1,0 +1,97 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.loadingBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+}
+
+.projectTitleCard {
+  padding: 32px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--bg-color-tertiary);
+}
+
+.section {
+  background-color: var(--bg-color-quaternary);
+  padding: 0;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: var(--text-color-tertiary);
+  height: 14px;
+}
+
+.selectContainer {
+  width: 100%;
+  padding: 24px;
+}
+
+.selectContainer > div {
+  width: 100%;
+}
+
+/* Radix Select content styles */
+.selectContainer [data-radix-select-content] {
+  background-color: var(--bg-color-tertiary);
+  border: 1px solid var(--border-color-gray);
+  border-radius: 4px;
+  margin-top: 4px;
+  overflow: hidden;
+  width: 100%;
+  min-width: calc(100% - 48px) !important;
+  position: relative;
+}
+
+.selectContainer [data-radix-select-viewport] {
+  width: 100%;
+}
+
+.selectContainer [data-radix-select-item] {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--text-color-primary);
+  cursor: pointer;
+  width: 100%;
+}
+
+.selectContainer [data-radix-select-item]:hover {
+  background-color: var(--bg-color-secondary);
+}
+
+/* Remove icon styles */
+/* .selectContainer button[data-radix-select-trigger] svg {
+  display: none;
+} */
+
+.selectedTab {
+  padding-inline: 16px;
+  padding-block: 8px;
+  text-align: left;
+}
+
+.selectedAssignedUserTab {
+  color: var(--text-color-purple);
+  background-color: var(--bg-color-red);
+}
+
+.selectedStatusTab {
+  background-color: transparent;
+  border-radius: 2px;
+}

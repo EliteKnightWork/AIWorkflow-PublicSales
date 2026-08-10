@@ -1,0 +1,83 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-1:677601128272:task-definition/labid-server-dev:41",
+  "containerDefinitions": [
+    {
+      "name": "labid-server-dev",
+      "image": "677601128272.dkr.ecr.ap-northeast-1.amazonaws.com/labid-server-dev:951761504d1ac18865210d4204dfd72b9f688442",
+      "cpu": 0,
+      "portMappings": [
+        {
+          "name": "internal",
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [],
+      "mountPoints": [
+        {
+          "containerPath": "/tmp/downloads",
+          "sourceVolume": "downloadFile"
+        }
+      ],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/logs/dev/labid-server-dev",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "labid-server-dev"
+        }
+      }
+    }
+  ],
+  "family": "labid-server-dev",
+  "taskRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-task-role-dev",
+  "executionRoleArn": "arn:aws:iam::677601128272:role/labid-server-ecs-execution-role-dev",
+  "networkMode": "awsvpc",
+  "revision": 41,
+  "volumes": [
+    {
+      "name": "downloadFile"
+    }
+  ],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": ["EC2", "FARGATE"],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "ephemeralStorage": {
+    "sizeInGiB": 200
+  },
+  "registeredAt": "2023-08-31T14:21:24.483Z",
+  "registeredBy": "arn:aws:iam::677601128272:user/cicd",
+  "tags": []
+}

@@ -1,0 +1,48 @@
+.deliveryFormTitleBox {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.deliveryFormTitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.deliveryInputStyle {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.deliveryCheckboxContainer {
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.checkboxRoot {
+  all: unset;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-white);
+  border: 2px solid var(--border-color-gray);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkboxRoot[data-state="checked"] {
+  background-color: var(--border-color-blue);
+  border-color: var(--border-color-blue);
+}
+
+.checkboxIndicator {
+  color: var(--color-white);
+}
+
+.deliveryEmailInput {
+  height: 48px;
+}

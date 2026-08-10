@@ -1,0 +1,98 @@
+.button {
+  font-weight: 700;
+  font-style: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--spacing-10);
+  gap: var(--spacing-2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* サイズ */
+.xl {
+  min-width: 320px;
+  min-height: 64px;
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: 16px;
+}
+
+.xl span {
+  font-size: 24px;
+}
+
+.large {
+  min-width: 288px;
+  min-height: 56px;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: 16px;
+}
+
+.large span {
+  font-size: 24px;
+}
+
+.medium {
+  min-width: 240px;
+  min-height: 48px;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: 14px;
+}
+
+.medium span {
+  font-size: 24px;
+}
+
+.small {
+  min-width: 160px;
+  min-height: 36px;
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: 12px;
+}
+
+.small span {
+  font-size: 16px;
+}
+
+.primary {
+  background-color: var(--color-orange-700);
+  color: var(--color-white-1000);
+}
+
+.primary:hover {
+  background-color: var(--color-orange-900);
+}
+
+.secondary {
+  background-color: var(--color-orange-50);
+  color: var(--color-orange-700);
+}
+
+.secondary:hover {
+  background-color: var(--color-orange-200);
+}
+
+.tertiary {
+  background-color: var(--color-black-800);
+  color: var(--color-white-1000);
+}
+
+.tertiary:hover {
+  background-color: var(--color-black-600);
+}
+
+.default {
+  background-color: var(--color-white-1000);
+  color: var(--color-black-800);
+}
+
+.default:hover {
+  background-color: var(--bg-color-hover);
+}
+
+.button:disabled {
+  background-color: var(--color-white-1000);
+  color: var(--text-color-disabled);
+  cursor: not-allowed;
+}

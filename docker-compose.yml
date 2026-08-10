@@ -1,0 +1,184 @@
+services:
+  app:
+    build:
+      context: ./server
+      dockerfile: docker/Dockerfile
+    ports:
+      - '3000:3000'
+    platform: linux/amd64
+    tty: true
+    stdin_open: true
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - ./server:/app
+      - ./openapi.yml:/openapi.yml
+      - bundle:/usr/local/bundle
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+      - PROJECT_BUCKET_NAME=labid-project-document-bucket-local
+      - PROJECT_BUCKET_REGION=us-east-1
+      - CLIENT_ORIGIN=http://localhost:8080
+      - ADMIN_CLIENT_ORIGIN=http://localhost:8081
+    networks:
+      - my_network
+
+  queue:
+    build:
+      context: ./server
+      dockerfile: docker/Dockerfile
+    platform: linux/amd64
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/app
+      - bundle:/usr/local/bundle
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+      - PROJECT_BUCKET_NAME=labid-project-document-bucket-local
+      - PROJECT_BUCKET_REGION=us-east-1
+    command: ['bundle', 'exec', 'bin/jobs']
+    networks:
+      - my_network
+
+  project_chat_agent:
+    build:
+      context: ./agent/project_chat
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./agent/project_chat/app:/app
+    ports:
+      - '3001:3001'
+    env_file:
+      - ./agent/project_chat/.env
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=labid_server_development
+      - INTERNAL_API_ENDPOINT=http://app:3000
+    networks:
+      - my_network
+
+  db:
+    image: mysql:8.0.36
+    platform: linux/arm64/v8
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./server/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - my_network
+
+  minio:
+    image: quay.io/minio/minio:latest
+    command: ['server', '/data', '--console-address', ':9090']
+    volumes:
+      - './server/minio:/data'
+    environment:
+      - MINIO_DOMAIN=minio.127.0.0.1.nip.io
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=password
+    ports:
+      - '9000:9000'
+      - '9090:9090'
+    networks:
+      my_network:
+        aliases:
+          - minio.127.0.0.1.nip.io
+
+  init-minio:
+    image: minio/mc:latest
+    depends_on:
+      - minio
+    environment:
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=password
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc alias set myminio http://minio:9000 root password) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc mb --region ap-northeast-1 myminio/labid-project-document-bucket-local;
+      /usr/bin/mc anonymous set download myminio/labid-project-document-bucket-local;
+      exit 0;
+      "
+    networks:
+      - my_network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.3
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - 'ES_JAVA_OPTS=-XX:UseSVE=0'
+      - 'CLI_JAVA_OPTS=-XX:UseSVE=0'
+    ports:
+      - 9200:9200
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+      - ./server/esconfig/synonyms.txt:/usr/share/elasticsearch/config/synonyms.txt
+    networks:
+      - my_network
+    user: elasticsearch
+    command: >
+      /bin/sh -c '
+        ./bin/elasticsearch-plugin list | grep -q analysis-kuromoji || ./bin/elasticsearch-plugin install analysis-kuromoji;
+        ./bin/elasticsearch-plugin list | grep -q analysis-icu || ./bin/elasticsearch-plugin install analysis-icu;
+        ./bin/elasticsearch;
+      '
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.14.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    networks:
+      - my_network
+
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    ports:
+      - 8082:8080
+    volumes:
+      - ./openapi.yml:/openapi.yml
+    environment:
+      SWAGGER_JSON: /openapi.yml
+    networks:
+      - my_network
+
+  # 提案書作成機能を使う時のみ起動
+  # localstack:
+  #   image: localstack/localstack:latest
+  #   platform: linux/amd64
+  #   networks:
+  #     - my_network
+  #   depends_on:
+  #     - app
+  #   extra_hosts:
+  #     - "host.docker.internal:host-gateway"
+  #   ports:
+  #     - "4566:4566"
+  #   environment:
+  #     - SERVICES=sqs,lambda,cloudformation,ssm,logs,iam
+  #     - DEBUG=1
+  #     - LAMBDA_EXECUTOR=docker
+  #     - HOSTNAME_EXTERNAL=localstack
+  #   volumes:
+  #     - "./.localstack:/var/lib/localstack"
+  #     - "/var/run/docker.sock:/var/run/docker.sock"
+
+volumes:
+  es_data:
+    driver: local
+  bundle:
+    driver: local
+
+networks:
+  my_network:

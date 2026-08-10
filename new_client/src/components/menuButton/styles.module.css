@@ -1,0 +1,12 @@
+.menuButton {
+  display: flex;
+  all: unset;
+  color: var(--text-color-dark-gray);
+  font-size: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton:hover {
+  cursor: pointer;
+}

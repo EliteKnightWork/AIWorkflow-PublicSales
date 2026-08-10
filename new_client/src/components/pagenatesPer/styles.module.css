@@ -1,0 +1,49 @@
+.pagePerSelectBox {
+  font-size: 14px;
+  color: var(--text-color-primary);
+  height: 48px;
+}
+
+.pagePerSelectTrigger {
+  font-size: 14px;
+  border-radius: 8px;
+  color: var(--text-color-primary);
+  background-color: var(--bg-color-quaternary);
+  height: 48px;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding-block: 12px;
+  padding-inline: 16px;
+}
+
+.pagePerSelectIcon {
+  margin-left: 8px;
+}
+
+.pagePerSelectContent {
+  overflow-y: auto;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+  position: relative;
+  width: var(--radix-select-trigger-width);
+  z-index: 2000;
+  max-height: 300px;
+}
+
+.pagePerSelectItem {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.pagePerSelectItem:hover {
+  background-color: var(--gray-3);
+}

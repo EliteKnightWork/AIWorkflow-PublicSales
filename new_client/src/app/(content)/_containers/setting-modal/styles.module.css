@@ -1,0 +1,90 @@
+/* モーダル */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  min-width: 500px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px var(--shadow-color-light);
+}
+
+.modalTitleBox {
+  color: var(--app-black-secondary);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color-primary);
+}
+
+.modalContent {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modalContentBox {
+  background-color: var(--bg-color-quaternary);
+}
+
+.openModalBtn {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.closeBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* サイドメニュー */
+.sideMenu {
+  height: 100%;
+  /* bottomButtonAreaの位置に影響 */
+  width: 240px;
+  padding: 24px;
+  border-right: 1px solid var(--border-color-separater);
+}
+
+.sideMenuTitle {
+  font-size: 18px;
+  color: var(--app-orange-main);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.sideMenuTitleIcon {
+  font-size: 24px;
+  color: var(--app-orange-main);
+  margin-right: 2px;
+}
+
+.sideMenuFooter {
+  margin-top: auto;
+  text-align: center;
+}
+
+.sideMenuFooterButton {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--bg-color-tag-text);
+}
+
+.sideMenuFooterButton:hover {
+  opacity: 0.6;
+}

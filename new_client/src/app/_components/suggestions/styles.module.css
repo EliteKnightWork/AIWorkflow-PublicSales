@@ -1,0 +1,17 @@
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-color-primary);
+  border: 1px solid var(--gray-6);
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 2px 10px var(--shadow-color-light);
+  z-index: 1000;
+  max-height: 70vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

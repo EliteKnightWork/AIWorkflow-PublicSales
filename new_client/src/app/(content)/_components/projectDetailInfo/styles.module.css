@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+.splitLayout {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.projectInfoCardContainer {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.projectInfoContainer {
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.projectTitleContainer {
+  padding: 32px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--bg-color-primary);
+
+  @media screen and (max-width: 540px) {
+    padding: 32px 16px;
+  }
+}
+
+.notFoundText {
+  font-weight: bold;
+}
+
+.awardedProject {
+  background-color: var(--bg-color-tertiary);
+  height: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+.projectContentContainer {
+  outline: none;
+  background-color: var(--bg-color-tertiary);
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  gap: 32px;
+
+  @media screen and (max-width: 540px) {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.similarProjects {
+  padding: 24px 32px;
+
+  @media screen and (max-width: 540px) {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.splitLayout.abbreviated .projectInfoContainer {
+  width: 50vw;
+  max-width: 50vw;
+  flex: 0 0 50vw;
+}
+
+.splitLayout:not(.abbreviated) .projectInfoContainer {
+  flex: 1 1 auto;
+  width: auto;
+  max-width: none;
+}
+
+.chatSidebarWrapper {
+  flex: 0 0 30vw;
+  max-width: 30vw;
+  display: flex;
+}
+
+.chatButtonWrapper {
+  position: absolute;
+  z-index: 10;
+  bottom: 40px;
+  right: 40px;
+
+  @media screen and (max-width: 540px) {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+.similarProjectsBox {
+  padding-block: 32px;
+  border-top: 1px solid var(--border-color-separater);
+}

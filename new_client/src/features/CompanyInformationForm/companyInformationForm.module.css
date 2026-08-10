@@ -1,0 +1,82 @@
+.root {
+  width: 100%;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+.descriptionText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-black-800);
+  width: 100%;
+}
+
+.rowsSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rowsHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.rowNameLabel {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.rowAddressLabel {
+  flex: 1;
+}
+
+.rowsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.rowItem {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-6);
+  align-items: start;
+}
+
+.rowNameField {
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.rowAddressField {
+  min-width: 0;
+  flex: 1;
+}
+
+.deleteButton {
+  margin-top: 6px;
+}
+
+.fileNameField {
+  flex: 1;
+  border-radius: var(--spacing-2);
+  border: 1px solid var(--color-black-200);
+  background-color: var(--color-white-1000);
+}
+
+.footerButtons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-10);
+  padding-top: var(--spacing-20);
+}
